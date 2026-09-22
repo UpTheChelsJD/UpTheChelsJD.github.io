@@ -187,10 +187,8 @@ At first, I thought that making the maze larger would make the project more inte
 <!-- INSERT 25 CM CAD IMAGE HERE -->
 
 ![Original 25 cm CAD Design](images/25cm.png)
-
-<!-- INSERT IMAGE OF FIRST PRINTED MAZE / FIRST PROTOTYPE HERE -->
-
-![Original Maze Prototype](images/25cm-maze.png)
+![Original 25 cm CAD Design](images/anchor.png)
+![Original 25 cm CAD Design](images/ancho1.png)
 
 ---
 
@@ -203,6 +201,10 @@ The maze was **way too large and heavy** for the two servo motors.
 When I originally tested the servos without the maze attached, they were able to move easily. However, once the large maze was placed on top of them, the motors had to support much more weight.
 
 The two servos could not properly hold and tilt the entire 25 cm maze.
+
+<video style="width:100%; max-width:700px;" controls>
+  <source src="videos/IMG_1675.mp4" type="video/mp4">
+</video>
 
 This was an important moment in my design process because the electronic system worked, but the complete physical system did not.
 
@@ -218,11 +220,8 @@ Instead of a diameter of **25 cm**, my new maze had a diameter of approximately 
 
 <!-- INSERT 12 CM CAD IMAGE HERE -->
 
-![12 cm CAD Design](images/12cm-cad.png)
+![12 cm CAD Design](images/12cm.png)
 
-<!-- INSERT IMAGE OF THE SMALLER PRINTED MAZE HERE -->
-
-![12 cm Printed Maze](images/12cm-maze.png)
 
 Reducing the size made the maze significantly lighter, which meant that the servo motors did not have to support as much weight.
 
@@ -244,10 +243,6 @@ This allows the maze to move:
 - forward and backward
 
 When the two servo movements are combined, I can control the overall tilt of the maze using the joystick.
-
-<!-- INSERT IMAGE OF ZIGZAG SERVO ASSEMBLY HERE -->
-
-![Servo Assembly](images/servo-assembly.png)
 
 ---
 
@@ -274,7 +269,6 @@ The result is that I can physically control the direction of the maze by moving 
 
 <!-- INSERT FINAL PROJECT VIDEO HERE -->
 
-<!--
 <video width="700" controls>
   <source src="videos/final-maze.mp4" type="video/mp4">
 </video>
