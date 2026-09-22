@@ -22,7 +22,7 @@ The joystick has five pins:
 
 `VRx` measures the horizontal movement of the joystick, while `VRy` measures the vertical movement. Since these are analog inputs, the Arduino reads their positions as values from approximately **0 to 1023**.
 
-The `SW` pin is different because it is a digital input. The joystick can also be pressed downward like a button, and the SW pin allows the Arduino to detect that press.
+The `SW` pin is different because it is a digital input. The joystick can also be pressed downward like a button, and the SW pin allows the Arduino to detect that press. The use of it I will talk about later on.
 
 I also connected the **5V pin and GND pin from the Arduino Uno R3 to the positive and negative rails of the breadboard**. This allowed the Arduino to provide power through the breadboard so that multiple components could share the same power and ground connections.
 
@@ -129,7 +129,7 @@ yVal = analogRead(yPin);
 
 The joystick produces values between approximately **0 and 1023**.
 
-However, I did not want my servos rotating through their full range because that would tilt the maze much too far. Instead, I only wanted each servo to move through a relatively small angle.
+However, I did not want my servos rotating through their full range (180 degrees) because that would tilt the maze much too far. I've tested it out and the ball **flies** outside of the maze. Instead, I only wanted each servo to move through a relatively **small** angle.
 
 To do this, I used Arduino's `map()` function:
 
@@ -159,7 +159,6 @@ Before building the actual maze, I tested the joystick and servo system by itsel
 
 I moved the joystick **up, down, left, and right** and watched how the two motors responded. This helped me confirm that the analog joystick values were being converted into the correct servo movements before I added the weight of the maze.
 
-<!-- INSERT VIDEO OF JOYSTICK CONTROLLING THE TWO SERVOS HERE -->
 <video style="width:100%; max-width:700px;" controls>
   <source src="videos/IMG_1676.mp4" type="video/mp4">
 </video>
@@ -257,8 +256,6 @@ The joystick acts as the input. The Arduino reads the X and Y values, converts t
 
 The result is that I can physically control the direction of the maze by moving the joystick.
 
-<!-- INSERT FINAL PROJECT VIDEO HERE -->
-
 <video width="700" controls>
   <source src="videos/IMG_1683.mp4" type="video/mp4">
 </video>
@@ -322,9 +319,13 @@ void loop() {
 
 ---
 
-## Component Research
+## Peer Support
 
-For this project, one of the components I had to learn more about was the **servo motor and Arduino Servo library**. I researched how a servo receives a signal from an Arduino, how to use `Servo.attach()`, and how to control its angle using `Servo.write()`.
+For this project, everyone in the class had to create a new design from the existing tools in Arduino. Alongside my own project, I tried to do my best in helping my friends when they needed help. Just today, I helped Eli & Ava set up the theme and the index.md code to write their document on. The classes before, I was eager to help Sean in his wiring, Leo and Steven in their circuit binding, and of course myself! 
 
-**Source:**  
-[ADD THE WEBSITE / VIDEO / TUTORIAL YOU ACTUALLY USED HERE]
+I also needed support as well. For example I needed a hot-glue gun from Matthew Ma because the school one's battery died down. Similarily, I asked Ryan for some starting advice for my Github setup. I believe that peer support really made me learn more about my abilities, uncover questions I didn't know earlier on, and become a better coder! 
+
+---
+
+## Reflection
+
