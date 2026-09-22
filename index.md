@@ -187,7 +187,13 @@ After printing the 25 cm maze and attaching it to the servo system, I discovered
 
 The maze was **way too large and heavy** for the two servo motors.
 
-When I originally tested the servos without the maze attached, they were able to move easily. However, once the large maze was placed on top of them, the motors had to support much more weight.
+When I originally tested the servos without the maze attached, they were able to move easily. 
+
+<video style="width:100%; max-width:700px;" controls>
+  <source src="videos/IMG_1673.mp4" type="video/mp4">
+</video>
+
+However, once the large maze was placed on top of them, the motors had to support much more weight.
 
 The two servos could not properly hold and tilt the entire 25 cm maze.
 
