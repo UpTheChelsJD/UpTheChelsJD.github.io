@@ -210,6 +210,7 @@ Instead of a diameter of **25 cm**, my new maze had a diameter of **12 cm**.
 
 
 ![12 cm CAD Design](images/12cm.png)
+![](images/IMG_1677.png)
 
 
 Reducing the size made the maze significantly lighter, which meant that the servo motors did not have to support as much weight.
