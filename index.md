@@ -186,9 +186,9 @@ At first, I thought that making the maze larger would make the project more inte
 
 <!-- INSERT 25 CM CAD IMAGE HERE -->
 
-![Original 25 cm CAD Design](images/25cm.png)
-![Original 25 cm CAD Design](images/anchor.png)
-![Original 25 cm CAD Design](images/ancho1.png)
+/images/25cm.png
+/images/anchor.png
+/images/ancho1.png
 
 ---
 
