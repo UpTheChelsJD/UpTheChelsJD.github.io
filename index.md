@@ -164,14 +164,6 @@ I moved the joystick **up, down, left, and right** and watched how the two motor
   <source src="videos/IMG_1676.mp4" type="video/mp4">
 </video>
 
-<!--
-Example if your video is uploaded to a videos folder:
-
-<video width="700" controls>
-  <source src="videos/servo-test.mp4" type="video/mp4">
-</video>
--->
-
 ---
 
 ## Designing the Maze in CAD
@@ -183,8 +175,6 @@ I used CAD to design both the maze itself and the anchoring system underneath it
 My original maze design had a diameter of approximately **25 cm**.
 
 At first, I thought that making the maze larger would make the project more interesting and give the ball more room to move.
-
-<!-- INSERT 25 CM CAD IMAGE HERE -->
 
 ![](images/25cm.png)
 ![](images/anchor.png)
@@ -216,9 +206,8 @@ Instead of continuing to force the original design to work, I decided that I nee
 
 I went back into CAD and created a much smaller version.
 
-Instead of a diameter of **25 cm**, my new maze had a diameter of approximately **12 cm**.
+Instead of a diameter of **25 cm**, my new maze had a diameter of **12 cm**.
 
-<!-- INSERT 12 CM CAD IMAGE HERE -->
 
 ![12 cm CAD Design](images/12cm.png)
 
@@ -270,7 +259,7 @@ The result is that I can physically control the direction of the maze by moving 
 <!-- INSERT FINAL PROJECT VIDEO HERE -->
 
 <video width="700" controls>
-  <source src="videos/final-maze.mp4" type="video/mp4">
+  <source src="videos/IMG_1683.mp4" type="video/mp4">
 </video>
 -->
 
