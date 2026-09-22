@@ -161,7 +161,7 @@ I moved the joystick **up, down, left, and right** and watched how the two motor
 
 <!-- INSERT VIDEO OF JOYSTICK CONTROLLING THE TWO SERVOS HERE -->
 <video style="width:100%; max-width:700px;" controls>
-  <source src="videos/IMG_1673.mov" type="video/mov">
+  <source src="videos/IMG_1673.mov" type="video/quickstart">
 </video>
 
 <!--
