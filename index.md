@@ -160,6 +160,9 @@ Before building the actual maze, I tested the joystick and servo system by itsel
 I moved the joystick **up, down, left, and right** and watched how the two motors responded. This helped me confirm that the analog joystick values were being converted into the correct servo movements before I added the weight of the maze.
 
 <!-- INSERT VIDEO OF JOYSTICK CONTROLLING THE TWO SERVOS HERE -->
+<video style="width:100%; max-width:700px;" controls>
+  <source src="videos/IMG_1673.mov" type="video/mov">
+</video>
 
 <!--
 Example if your video is uploaded to a videos folder:
