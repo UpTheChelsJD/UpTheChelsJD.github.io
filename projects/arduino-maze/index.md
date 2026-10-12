@@ -28,7 +28,7 @@ I also connected the **5V pin and GND pin from the Arduino Uno R3 to the positiv
 
 <!-- INSERT CIRCUIT / BLUEPRINT IMAGE HERE -->
 
-![Circuit Diagram](images/76961c43-f83f-423f-a8e1-35f5d990b0ac.png)
+![Circuit Diagram](../../images/76961c43-f83f-423f-a8e1-35f5d990b0ac.png)
 
 (Here is just another look of a blueprint - it is AI generated but I took the picture of my own circuit and told it to resemble the picture in a clearer way)
 
@@ -175,9 +175,10 @@ My original maze design had a diameter of approximately **25 cm**.
 
 At first, I thought that making the maze larger would make the project more interesting and give the ball more room to move.
 
-![](images/25cm.png)
-![](images/anchor.png)
-![](images/ancho1.png)
+![](../../images/25cm.png)
+
+![](../../images/anchor.png)
+![](../../images/ancho1.png)
 
 ---
 
@@ -214,8 +215,8 @@ I went back into CAD and created a much smaller version.
 Instead of a diameter of **25 cm**, my new maze had a diameter of **12 cm**.
 
 
-![12 cm CAD Design](images/12cm.png)
-![](images/IMG_1677.png)
+![12 cm CAD Design](../../images/12cm.png)
+![](../../images/IMG_1677.png)
 
 
 Reducing the size made the maze significantly lighter, which meant that the servo motors did not have to support as much weight.
