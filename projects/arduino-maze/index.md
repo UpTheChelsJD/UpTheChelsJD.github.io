@@ -30,7 +30,7 @@ I also connected the **5V pin and GND pin from the Arduino Uno R3 to the positiv
 
 ![Circuit Diagram](../../images/76961c43-f83f-423f-a8e1-35f5d990b0ac.png)
 
-(Here is just another look of a blueprint - it is AI generated but I took the picture of my own circuit and told it to resemble the picture in a clearer way)
+(Here is a look of the blueprint of my final maze- it is AI generated but I took the picture of my own circuit and told it to resemble the picture in a clearer way)
 
 ---
 
@@ -338,7 +338,9 @@ I also needed support as well. For example I needed a hot-glue gun from Matthew 
 
 I've learnt a lot about the basics of Electrical Circuits and Engineering. And so if I were to bring what I've learnt to a real problem, I would love to work with game designers to understand and help provide my meager support on wires and joystick connections. It's a very begineers class, and so I would change a lot of aspects on my current build to make it an actual usable maze for fun. First, I would need to set up the maze like a proper game and not have the wires dancing around. I would need a transparent cover on the maze so that the ball doesn't fly. I still need to add a "cushion" to the maze so it doesn't turn around vigorously. If I were to work with game designers on the maze I have now, I would need way more creative ideas and better gaming-experience. Thus, one thing/skill I would most definitely carry on is my wiring and coding skills. These skills are really crucial to my project and to any project related to electrical engineering. 
 
-It's been a great few classes working with Arduino. I still remember the young me asking Wachi for help on a circuit board. Now, I can code my own stuff and run my own code! Thank you Tech Sem for this great lesson!
+To be really honest, I used a lot of AI in research and also formatting this Github document you see right now. As this project is the first time I am introduced to many new topics, I need a lot of help. For example, I use AI to format some of my documents to make them look beautiful. However, I try to understand them along the way; I am also learning even with the help of AI!
+
+All in all, it's been a great few classes working with Arduino. I still remember the young me asking Wachi for help on a circuit board. Now, I can code my own stuff and run my own code! Thank you Tech Sem for this great lesson!
 
 [← Back to All Projects](../../)
 
