@@ -28,8 +28,8 @@ Ryan and I learnt and made a primitive prototype-like stepper motor to work. It 
 
 ---
 
-### Project 3
+### One Shot Snake Game
 
-Coming soon.
+I've started to create a one-shot game with our own school's AI GPT. I've made an easy snake game to start learning HTML/CSS/JS coding!
 
-[**View Project →**](projects/project-3/)
+[**View Project →**](projects/one-shot-game/)
