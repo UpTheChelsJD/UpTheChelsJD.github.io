@@ -3,7 +3,7 @@
 ## Project Inspiration
 
 For this project, I wanted to build on my existing knowledge of Arduino, breadboards, digital and analog inputs, and basic coding. I had seen many cool videos online where people used a joystick to control a tilting maze, and I wanted to try to replicate the idea using skills and components that I had already practiced.
-
+s
 My goal was to create a physical maze that could be controlled using a joystick. Moving the joystick left and right would control one servo motor, while moving it up and down would control another. By combining the movement of the two servos, I would be able to tilt the maze in different directions and eventually guide a ball through it.
 
 ---
