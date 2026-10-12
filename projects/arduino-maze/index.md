@@ -160,7 +160,7 @@ Before building the actual maze, I tested the joystick and servo system by itsel
 I moved the joystick **up, down, left, and right** and watched how the two motors responded. This helped me confirm that the analog joystick values were being converted into the correct servo movements before I added the weight of the maze.
 
 <video style="width:100%; max-width:700px;" controls>
-  <source src="videos/IMG_1676.mp4" type="video/mp4">
+  <source src="../../videos/IMG_1676.mp4" type="video/mp4">
 </video>
 
 ---
@@ -191,7 +191,7 @@ The maze was **way too large and heavy** for the two servo motors.
 When I originally tested the servos without the maze attached, they were able to move easily. 
 
 <video style="width:100%; max-width:700px;" controls>
-  <source src="videos/IMG_1673.mp4" type="video/mp4">
+  <source src="../../videos/IMG_1673.mp4" type="video/mp4">
 </video>
 
 However, once the large maze was placed on top of them, the motors had to support much more weight.
@@ -199,7 +199,7 @@ However, once the large maze was placed on top of them, the motors had to suppor
 The two servos could not properly hold and tilt the entire 25 cm maze.
 
 <video style="width:100%; max-width:700px;" controls>
-  <source src="videos/IMG_1675.mp4" type="video/mp4">
+  <source src="../../videos/IMG_1675.mp4" type="video/mp4">
 </video>
 
 This was an important moment in my design process because the electronic system worked, but the complete physical system did not.
@@ -264,7 +264,7 @@ The joystick acts as the input. The Arduino reads the X and Y values, converts t
 The result is that I can physically control the direction of the maze by moving the joystick.
 
 <video width="700" controls>
-  <source src="videos/IMG_1683.mp4" type="video/mp4">
+  <source src="../../videos/IMG_1683.mp4" type="video/mp4">
 </video>
 -->
 
