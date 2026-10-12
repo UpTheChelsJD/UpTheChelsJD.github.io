@@ -23,7 +23,8 @@ I designed and built a two-axis maze controlled by a joystick and two servo moto
 ### Easy Stepper Motor Design With Ryan
 
 Ryan and I learnt and made a primitive prototype-like stepper motor to work. It is the first step to create a final 3D scanner!
-[**View Project →**](projects/project-2/)
+
+[**View Project →**](projects/stepper-motor/)
 
 ---
 
