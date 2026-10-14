@@ -124,13 +124,13 @@ Interestingly here, I learnt that collision detection uses `Array.some()` to com
 
 ![](../../images/3.png)
 
-Yet I actually ran into a big **challenge, or a little bug.** I could not have my preview of the game no matter how hard I tried to refresh or edit by CSS or JavaScript page. Eventually, I wrote everything in the `HTML` section, something **I also didn't previously knew was possible**. And so after multiple tries I finally got it to work. I inquired my AI assistant with the problem, and even it didn't know why the CSS or JS pages fell. It said the bug may have been because of **preprocessor setting, disconnected preview, or even wrong paste targets**.
+Yet I actually ran into a big **challenge, or a little bug.** I could not have my preview of the game no matter how hard I tried to refresh or edit by CSS or JavaScript page. The `HTML` section was working, but neither of my `CSS` or `Javascript` sections were responding. Eventually, I wrote everything in the `HTML` section, something **I also didn't previously knew was possible**. And so after multiple tries I finally got it to work. I inquired my AI assistant with the problem, and even it didn't know why the CSS or JS pages did not respond. It said the bug may have been because of **preprocessor setting, disconnected preview, or even wrong paste targets**.
 
 ![](../../images/4.png)
 
 **Step 5 — I definitely built above understanding and actually explored tooling.** But really just by a little...
 
-I just played with speed, colour of the snake, and the size of the canvas! It was rewarding to see immediate changes!
+I just played with speed, colour of the snake, and the size of the canvas! It was rewarding to see immediate changes after learning the code and seeing for myself!
 
 <video style="width:100%; max-width:700px;" controls>
   <source src="../../videos/67.mp4" type="video/mp4">
