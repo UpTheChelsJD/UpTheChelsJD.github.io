@@ -71,7 +71,7 @@ For example, from these lines, the snake-green `#4ecb71` is reused for the title
 
 3. An interesting point for a very primitive snake game: the snake is just a list of squares
 
-Unlike ones you play on Google, this **AI-one-shot** game is much more primitive. The snake actually are just squares that appear and then disappear. The board is an invisible **20×20 grid**. The snake, after all, is just an array (list) of grid coordinates. For example:
+Unlike ones you play on Google, this **AI-one-shot** game is much more primitive. The snake actually are just squares that appear and then disappear. The board is an invisible **20×20 grid**. The snake, after all, is just an array (list) of grid coordinates. If the snake eats the apple, the head and tail square both stay. If it moves in any other way, a new block is formed ahead of it and the tail is deleted. For example:
 
 ```javascript
 const GRID = 20;
@@ -94,11 +94,10 @@ function gameLoop() {
 }
 ```
 
-This runs every `speed` milliseconds (starting at 150 ms ≈ 6–7 moves per second, and getting faster with each apple). The full flow of one game:
+This runs every `speed` milliseconds (starting at 150 ms ≈ 6–7 moves per second, and getting faster with each apple). The full flow of one game is as follows:
 
 
-
-## 5. Collision detection
+5. Collision detection and Random apple placement
 
 ```javascript
 // Wall: did the head leave the 0–19 grid?
@@ -107,10 +106,6 @@ if (head.x < 0 || head.x >= GRID || head.y < 0 || head.y >= GRID) return endGame
 // Self: does any body square match the head's position?
 if (snake.some(s => s.x === head.x && s.y === head.y)) return endGame();
 ```
-
-`.some()` asks: "does *at least one* square in the list match this condition?" If the head's coordinates equal any body segment's — crash. The apple check works the same way with `===` comparisons.
-
-## 6. Placing apples randomly 🍎
 
 ```javascript
 function placeApple() {
@@ -121,40 +116,13 @@ function placeApple() {
 }
 ```
 
-`Math.random()` gives a decimal between 0 and 1; × 20 and rounded down = a random grid square (0–19). The loop retries until the spot is **not** covered by the snake — otherwise an apple could spawn inside the body.
+Interestingly here, I learnt that collision detection uses `Array.some()` to compare the head against walls and body segments. It works with apple placement, in which `Math.random()` gives a decimal between 0 and 1; × 20 and rounded down = a random grid square (0–19), and is very important with the snake's scoring system.
+
+**Step 4 — After learning the code, I started to learn the differences between the languages** I Learnt what the "boring" lines of `<!DOCTYPE html>` do, how important format was by using `<style.css>`, and eventually going to the real Javascript panel. I then eventually got to the tool of CodePen, and I explored it by inputting my AI-generated code into the website.
+
+![](../../images/5.png)
 
 
-## Further reading
-
-- [MDN Canvas Tutorial](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) — the standard reference used by professional web developers
-
-*Notes written up with the help of an AI assistant while studying the generated code.*
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  - The snake is just an **array of grid coordinates**; the first element is the head
-  - Movement = add a new head (`unshift`) + remove the tail (`pop`) each tick
-  - **Growth** = eating an apple simply *skips* the `pop()` — one missing line is the whole mechanic!
-  - Collision detection uses `Array.some()` to compare the head against walls and body segments
-  - The game loop runs on `setTimeout`, speeding up slightly with each apple
-- [x] **Step 4 — Studied the structure.** Learned what the "boring" lines do: `<!DOCTYPE html>`, `<meta charset>`, the viewport tag for mobile, and the head/body split.
 - [x] **Step 5 — Explored tooling.** Learned how to split the single file into CodePen's HTML / CSS / JS panels.
 - [ ] **Step 6 — Wrap-around walls challenge.** Modify the wall collision (line 117) so the snake teleports to the opposite side instead of dying. *(In progress — attempting this myself!)*
 
