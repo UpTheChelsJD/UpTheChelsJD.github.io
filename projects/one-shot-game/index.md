@@ -83,7 +83,7 @@ dir = {x: 1, y: 0};   // moving right (x increases by 1 each step)
 
 Another interesting point I learnt was that on a canvas page, the y value gets **bigger going down** — the opposite of any math class, whether HPC or Calc!
 
-4. The game loop — the heartbeat 💓
+4. The game loop — the actual core
 
 ```javascript
 function gameLoop() {
