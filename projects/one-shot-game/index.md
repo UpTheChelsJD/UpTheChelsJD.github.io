@@ -120,25 +120,25 @@ Interestingly here, I learnt that collision detection uses `Array.some()` to com
 
 **Step 4 — After learning the code, I started to learn the differences between the languages** I Learnt what the "boring" lines of `<!DOCTYPE html>` do, how important format was by using `<style.css>`, and eventually going to the real Javascript panel. I then eventually got to the tool of CodePen, and I explored it by inputting my AI-generated code into the website.
 
-![](../../images/5.png)
+![](../../images/3.png)
 
+Yet I actually ran into a big **challenge, or a little bug.** I could not have my preview of the game no matter how hard I tried to refresh or edit by CSS or JavaScript page. Eventually, I wrote everything in the `HTML` section, something **I also didn't previously knew was possible**. And so after multiple tries I finally got it to work.
 
-- [x] **Step 5 — Explored tooling.** Learned how to split the single file into CodePen's HTML / CSS / JS panels.
-- [ ] **Step 6 — Wrap-around walls challenge.** Modify the wall collision (line 117) so the snake teleports to the opposite side instead of dying. *(In progress — attempting this myself!)*
+![](../../images/4.png)
 
-## 🗂️ Code structure
+**Step 5 — I defeinitely built above understanding and actually explored tooling.** But really just by a little...
 
-| Lines | Section |
-|---|---|
-| 1–6 | Document setup (doctype, meta tags, title) |
-| 7–50 | CSS styling |
-| 51–57 | HTML body (scoreboard, canvas, button) |
-| 59–70 | JS setup (element references, constants, state) |
-| 72–110 | `resetGame`, `placeApple`, `setDirection`, `gameLoop` |
-| 112–142 | `update` and `endGame` — the game "brain" 🧠 |
-| 144–188 | `draw` and `dot` — canvas rendering 🎨 |
-| 190–217 | Keyboard, touch, and restart controls |
+<video style="width:100%; max-width:700px;" controls>
+  <source src="../../videos/final-maze.mov" type="video/quicktime">
+</video>
 
+<video style="width:100%; max-width:700px;" controls>
+  <source src="../../videos/final-maze.mov" type="video/quicktime">
+</video>
+
+<video style="width:100%; max-width:700px;" controls>
+  <source src="../../videos/final-maze.mov" type="video/quicktime">
+</video>
 ## 💡 What I learned
 
 1. **One-shot generation works for small, well-known problems** like Snake — the AI didn't need any corrections.
