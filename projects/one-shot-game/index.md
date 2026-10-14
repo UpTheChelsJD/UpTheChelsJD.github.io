@@ -144,7 +144,9 @@ I just played with speed, colour of the snake, and the size of the canvas! It wa
   <source src="../../videos/6767.mp4" type="video/mp4">
 </video>
 
-## Conclusion
+## Conclusion & Goals
 
 Once again, AI has not let me down. I have one-shotted this to work perfectly, and this is a very good intial development of my key important software projects we are going to creat in the future! I hope I really have fun and dial in into the future courses!
+
+Right now, after exploring a lot more in snake and in the code, I actually do want to improve my understanding of the game by making the snake be able to move from one board's end to another so that it could **"teleport"**. This is my goal for my future classes this week.
 
