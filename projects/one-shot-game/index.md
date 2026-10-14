@@ -96,7 +96,7 @@ function gameLoop() {
 
 This runs every `speed` milliseconds (starting at 150 ms ≈ 6–7 moves per second, and getting faster with each apple). The full flow of one game is as follows:
 
-![](../../images/5.png)
+![Once again just a flow chart I told AI to create](../../images/5.png)
 
 
 5. Collision detection and Random apple placement
