@@ -20,17 +20,13 @@ This project is an experiment in **one-shot AI code generation**: I asked an AI 
 
 **Step 1 — The one-shot prompt.** I asked the AI for "a green snake trying to eat apples that gets longer every time it eats an apple." After a few seconds, it gave me a a complete `snake-game.html` file with swipe + keyboard controls, scoring, a best-score tracker, and increasing speed.
 
-And of course I had to play the classic game!
-![](../../images/final-maze.png)
+![Giving AI my prompt](../../images/1.png)
 
+**Step 2 — Played and tested it.** I, of course, had to play the classic game in order to verify the code and if it was working on my laptop!
 
+![Playing the Actual Game](../../images/2.png)
 
-
-
-
-Received a complete `snake-game.html` file with swipe + keyboard controls, scoring, a best-score tracker, and increasing speed.
-- [x] **Step 2 — Played and tested it.** Verified it works in the browser on my device.
-- [x] **Step 3 — Studied the game logic.** Walked through the code with the AI and learned:
+**Step 3 — Studied the game logic.** Because I could not code hundreds of lines of code in less than seconds, I walked through the code with WebbGPT and actually surprisingly learnt a lot:
   - The snake is just an **array of grid coordinates**; the first element is the head
   - Movement = add a new head (`unshift`) + remove the tail (`pop`) each tick
   - **Growth** = eating an apple simply *skips* the `pop()` — one missing line is the whole mechanic!
