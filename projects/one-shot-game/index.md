@@ -131,15 +131,15 @@ Yet I actually ran into a big **challenge, or a little bug.** I could not have m
 I just played with speed, colour of the snake, and the size of the canvas! It was rewarding to see immediate changes!
 
 <video style="width:100%; max-width:700px;" controls>
-  <source src="../../videos/Screen Recording 2026-10-13 at 21.52.30.mov" type="video/quicktime">
+  <source src="../../images/Screen Recording 2026-10-13 at 21.52.30.mov" type="video/quicktime">
 </video>
 
 <video style="width:100%; max-width:700px;" controls>
-  <source src="../../videos/Screen Recording 2026-10-13 at 21.55.09.mov" type="video/quicktime">
+  <source src="../../images/Screen Recording 2026-10-13 at 21.55.09.mov" type="video/quicktime">
 </video>
 
 <video style="width:100%; max-width:700px;" controls>
-  <source src="../../videos/Screen Recording 2026-10-13 at 21.53.09.mov" type="video/quicktime">
+  <source src="../../images/Screen Recording 2026-10-13 at 21.53.09.mov" type="video/quicktime">
 </video>
 
 ## Conclusion
