@@ -27,6 +27,128 @@ This project is an experiment in **one-shot AI code generation**: I asked an AI 
 ![Playing the Actual Game](../../images/2.png)
 
 **Step 3 — Studied the game logic.** Because I could not code hundreds of lines of code in less than seconds, I walked through the code with WebbGPT and actually surprisingly learnt a lot:
+
+1. The HTML, or the skeleton
+
+```html
+<canvas id="game" width="400" height="400"></canvas>
+```
+
+The `<canvas>` is like a blank digital whiteboard, which is 400×400 pixels. It can be changed, and JavaScript draws the snake and apple onto it, erases it, and redraws it many times per second. It is like a flipbook animation!
+
+The other body elements are the title, the scoreboard, a message line, and a hidden "Play Again" button, as presented here:
+
+```html
+<h1>🐍 SNAKE</h1>
+<div id="scoreboard">Score: <span id="score">0</span> &nbsp;|&nbsp; Best: <span id="best">0</span></div>
+<canvas id="game" width="400" height="400"></canvas>
+<div id="message">Press an arrow key / WASD, or swipe to start!</div>
+<button id="restartBtn">Play Again</button>
+```
+
+2. The CSS — the look
+
+The style.css part is the `<style>` block. Colors and positions are changed here, and there are a few key parts:
+
+```css
+body {
+  background: #1a1a2e;      /* dark navy page */
+  display: flex;             /* center everything */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  touch-action: none;        /* stops swipes from scrolling the page */
+}
+canvas {
+  background: #0f3460;       /* the board color */
+  border: 3px solid #4ecb71; /* green frame */
+  max-width: 95vw;           /* shrink to fit small screens */
+  max-height: 70vh;
+}
+```
+
+For example, from these lines, the snake-green `#4ecb71` is reused for the title, border, button, and score numbers so the theme matches.
+
+3. An interesting point for a very primitive snake game: the snake is just a list of squares
+
+Unlike ones you play on Google, this **AI-one-shot** game is much more primitive. The snake actually are just squares that appear and then disappear. The board is an invisible **20×20 grid**. The snake, after all, is just an array (list) of grid coordinates. For example:
+
+```javascript
+const GRID = 20;
+const CELL = canvas.width / GRID;
+
+snake = [{x: 9, y: 10}, {x: 8, y: 10}, {x: 7, y: 10}];  // 3-square snake
+dir = {x: 1, y: 0};   // moving right (x increases by 1 each step)
+```
+
+Another interesting point I learnt was that on a canvas page, the y value gets **bigger going down** — the opposite of any math class, whether HPC or Calc!
+
+4. The game loop — the heartbeat 💓
+
+```javascript
+function gameLoop() {
+  if (gameOver) return;
+  update();                          // move the snake, check collisions
+  draw();                            // repaint the picture
+  loopId = setTimeout(gameLoop, speed);  // do it again after speed ms
+}
+```
+
+This runs every `speed` milliseconds (starting at 150 ms ≈ 6–7 moves per second, and getting faster with each apple). The full flow of one game:
+
+
+
+## 5. Collision detection
+
+```javascript
+// Wall: did the head leave the 0–19 grid?
+if (head.x < 0 || head.x >= GRID || head.y < 0 || head.y >= GRID) return endGame();
+
+// Self: does any body square match the head's position?
+if (snake.some(s => s.x === head.x && s.y === head.y)) return endGame();
+```
+
+`.some()` asks: "does *at least one* square in the list match this condition?" If the head's coordinates equal any body segment's — crash. The apple check works the same way with `===` comparisons.
+
+## 6. Placing apples randomly 🍎
+
+```javascript
+function placeApple() {
+  while (true) {
+    apple = { x: Math.floor(Math.random() * GRID), y: Math.floor(Math.random() * GRID) };
+    if (!snake.some(s => s.x === apple.x && s.y === apple.y)) break;
+  }
+}
+```
+
+`Math.random()` gives a decimal between 0 and 1; × 20 and rounded down = a random grid square (0–19). The loop retries until the spot is **not** covered by the snake — otherwise an apple could spawn inside the body.
+
+
+## Further reading
+
+- [MDN Canvas Tutorial](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) — the standard reference used by professional web developers
+
+*Notes written up with the help of an AI assistant while studying the generated code.*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   - The snake is just an **array of grid coordinates**; the first element is the head
   - Movement = add a new head (`unshift`) + remove the tail (`pop`) each tick
   - **Growth** = eating an apple simply *skips* the `pop()` — one missing line is the whole mechanic!
