@@ -150,3 +150,35 @@ Once again, AI has not let me down. I have one-shotted this to work perfectly, a
 
 Right now, after exploring a lot more in snake and in the code, I actually do want to improve my understanding of the game by making the snake be able to move from one board's end to another so that it could **"teleport"**. This is my goal for my future classes this week.
 
+## DAY 2:
+
+After setting the goal for adding a wall warp, or that the snake could travel from one end to the other end of the board, I set off to accomplish that task. Because I am very new to JAVA coding, I didn't know where to start, so I asked my AI assisstant to tell me where to start. 
+
+It told me it was a pretty easy task and I just had to alter a few lines from the original ** 'Wall Colision and then death'** to the now **'You can go through walls'**.
+
+After a few tries, and especially understanding that the grid positions go from 0 to 19 (because GRID = 20), I could understand why in the line...
+
+```javascript
+if (head.x< 0) head.x = GRID -1:
+```
+
+...one would need to write GRID - 1. As it approaches zero, it has to go to the other side, thus becoming 20 - 1 = 19. The next tick, it becomes 19 - 1 = 18. The below is what the AI told me to follow the first structure and create replicas for all 4 walls.
+
+```javascript
+function update() {
+  dir = nextDir;
+  const head = { x: snake[0].x + dir.x, y: snake[0].y + dir.y };
+
+  // Wrap-around walls (replaces the old endGame line!)
+  if (head.x < 0) head.x = GRID - 1;
+  // ... your three more rules here ...
+
+  // Self collision (keep this! You should still die by biting yourself)
+  if (snake.some(s => s.x === head.x && s.y === head.y)) return endGame();
+
+  // ...rest stays the same
+```
+At the end, I understood that if the head approaches zero in **any x or y** direction, the GRID would -1, while when approaching 19 in **any x or y** direction, the GRID would == 0, as it goes to the other side. Hence, here are my steps and my final result for the goal.
+
+
+
