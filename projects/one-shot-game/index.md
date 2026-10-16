@@ -154,7 +154,7 @@ Right now, after exploring a lot more in snake and in the code, I actually do wa
 
 After setting the goal for adding a wall warp, or that the snake could travel from one end to the other end of the board, I set off to accomplish that task. Because I am very new to JAVA coding, I didn't know where to start, so I asked my AI assisstant to tell me where to start. 
 
-![Giving AI my prompt](../../images/1.png)
+![Giving AI my prompt](../../images/10.png)
 
 
 It told me it was a pretty easy task and I just had to alter a few lines from the original ** 'Wall Colision and then death'** to the now **'You can go through walls'**.
@@ -183,7 +183,25 @@ function update() {
 ```
 At the end, I understood that if the head approaches zero in **any x or y** direction, the GRID would -1, while when approaching 19 in **any x or y** direction, the GRID would == 0, as it goes to the other side. Hence, here are my steps and my final result for the goal.
 
+I started the code with this unchanged code:
+
+![](../../images/20.png)
+
+And then I changed the code to this:
+
 ![](../../images/24.png)
+
+And here is my final result:
+
+<video style="width:100%; max-width:700px;" controls>
+  <source src="../../videos/6.mp4" type="video/mp4">
+</video>
+
+<video style="width:100%; max-width:700px;" controls>
+  <source src="../../videos/7.mp4" type="video/mp4">
+</video>
+
+
 
 
 
