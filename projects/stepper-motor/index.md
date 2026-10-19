@@ -259,42 +259,54 @@ The biggest thing we learned from using AI was that getting code from AI is diff
 
 ## Adding the Stepper Motor
 
-After getting the servo and distance sensor working, John and I moved on to the next part of our plan: adding a stepper motor.
-The goal of the stepper motor is to eventually move the scanner in another direction while the servo changes the angle of the distance sensor. This should let us collect measurements from more positions instead of only sweeping side to side.
-We had not worked with this type of stepper motor and driver before, so we followed this tutorial:
-Control a NEMA 17 Stepper Motor with A4988 Driver and Arduino
-The tutorial showed us how to connect the NEMA 17 stepper motor, A4988 motor driver, Arduino, and external power supply.
+After getting the servo and distance sensor working, in the next class, Ryan and I moved on to the next part of our plan: **adding a stepper motor instead of a servo**.
+
+The goal of the stepper motor is to eventually move the scanner in another direction while the servo changes the angle of the distance sensor. This should let us collect measurements from more positions instead of only sweeping side to side. It could turn 360 degrees all around! With this design, we wouldn't have to manually rotate the device again.
+
+We had not worked with this type of stepper motor and driver before, so we followed the tutorial:
+
+`Control a NEMA 17 Stepper Motor with A4988 Driver and Arduino - Full Guide`
+
+The tutorial showed us how to connect the NEMA 17 stepper motor, A4988 motor driver, Arduino, and external power supply. It also told us how to be caution with handling heat and overburning of the motors. It told us to use a **multimeter** and change the amps of the electrical current and many more important minute details!
+
 For this stage, the tutorial was our main source rather than AI. We followed the wiring shown in the video and stopped at different points to make sure we understood what each connection was doing before continuing.
-Stepper Motor Setup
+
+## Stepper Motor Setup
+
 One thing we learned was that the stepper motor is not controlled directly from the Arduino. The A4988 driver is between the Arduino and the motor.
-The Arduino sends the driver instructions such as which direction to move and when to take a step. The driver handles the higher current needed by the stepper motor.
+The Arduino sends the driver instructions such as which direction to move and when to take a step. The driver handles the higher current needed by the stepper motor with a small metal piece and then gives the information, through **pairs** of wires, to the stepper-motor. Here, a very interesting thing is that for the **red, green, blue, and black** wires, they come in pairs. From the video, I learnt that to make the motor work, pairs should be stuck together properly. The video taught us a way to test which 2 come together, and that was a very new thing I learnt!
 
 <img width="410" height="540" alt="1e07e59390015b27927fce45a7b183a8" src="https://github.com/user-attachments/assets/fea6032e-a2e3-46b5-8117-0685baaddb4f" />
 <img width="410" height="540" alt="61abceb8b2d4e09d34a9bf9b8b7f6a9c" src="https://github.com/user-attachments/assets/d9cfdedf-a3e4-46d2-84a8-5f3d8db144c6" />
-Setting the Current Limit
-Before running the stepper motor, we needed to set the current limit on the A4988 driver.
+
+## Setting the Current Limit
+
+As mentioned before in the previous part, before running the stepper motor, we needed to set the current limit on the A4988 driver. It was important to control the variable and to not make the motor go **explode**.
+
 The small potentiometer on the driver controls how much current the motor is allowed to receive, so we used a multimeter while adjusting it instead of guessing.
+
 This part took longer than we expected because we ran into a few problems. At first, the multimeter stopped working because its battery ran out. After replacing the battery, it still did not seem to give us the reading we expected, so we had to stop and check the setup again.
 We checked the multimeter settings, where the probes were connected, and how we were measuring the driver. Once we got the multimeter working again, we continued adjusting the small potentiometer on the A4988 while checking the reading.
 
 <video width="700" controls style="max-width: 100%;">
 <source src="videos/stepper-current-limit.mp4" type="video/mp4">
-Your browser does not support the video tag.
 </video>
-This was one of the messier parts of the project because the problem was not with our code. It was with the tool we were using to test the hardware, so we had to figure that out before we could keep working on the stepper motor. This step helped us understand that connecting a motor is not only about getting the wires in the correct places. We also had to make sure the driver was set correctly for the motor before we started controlling its movement.
-Current Progress
-At this point, we have started setting up the stepper motor and driver and have adjusted the current limit. Our next step is to get the Arduino controlling the stepper motor and then figure out how to combine its movement with the servo and distance sensor.
-Connecting and Testing the Stepper Motor
-After setting the current limit, John and I connected the stepper motor to the A4988 driver.
-The stepper motor has four wires that connect to the motor outputs on the driver. This part was a little confusing because the wires are connected in pairs inside the motor, and they have to go to the correct motor terminals on the driver. We had to pay attention to which wires belonged together instead of just connecting them randomly.
-The Arduino also connects to the driver using two important control pins:
+
+
+## Setting up the final spin for the motor
+
+At this point, we have started setting up the stepper motor and driver and have adjusted the current limit. Our next step is to get the Arduino controlling the stepper motor.
+
+And after setting the current limit, Ryan and I connected the stepper motor to the A4988 driver.
+
+The Arduino connects to the driver using two important control pins:
 ```text
 DIR → Arduino Pin 2
 STEP → Arduino Pin 3
 ```
 `DIR` controls which direction the motor turns. `STEP` controls when the motor moves one step.
 At this point, our goal was not to connect the stepper motor to the whole scanner yet. We first wanted to see if we could make the motor turn by itself.
-Making the Stepper Motor Turn
+
 For our first test, we copied the basic stepper motor code from the YouTube tutorial we were following.
 ```cpp
 const int dirPin = 2;
@@ -341,19 +353,16 @@ The STEP pin repeatedly switches between HIGH and LOW. Each pulse tells the driv
 The delays also affect how quickly the pulses are sent. With a `5000` microsecond delay between changes, the motor turns relatively slowly. A shorter delay would send the pulses faster and make the motor turn faster.
 This first test helped us separate the project into smaller pieces. Before trying to combine the stepper motor with the servo and ultrasonic sensor, we wanted to make sure the motor, driver, wiring, and basic code could work on their own.
 
+## THE FINAL WORKING STEPPER MOTOR IS HERE
+
 <video width="700" controls style="max-width: 100%;">
 <source src="videos/stepper-motor-test.mp4" type="video/mp4">
-Your browser does not support the video tag.
 </video>
-John and I testing the stepper motor after connecting it to the A4988 driver and Arduino.
-Problem: Powering the Stepper Motor
-When we tried to add the stepper motor to the scanner, we ran into a problem with the power setup. The voltage and power needed for the stepper motor were much higher than what we were already using for the servo and sensor, and we were worried that connecting it incorrectly could damage the scanner or the Arduino.
-We started trying to connect the stepper motor setup, but during the process John received a small electrical shock. At that point, we stopped working with the powered circuit instead of continuing to experiment with it.
-This made us realize that we needed to understand the power requirements and wiring more clearly before combining the stepper motor with the rest of the scanner. Rather than risk damaging the components or getting shocked again, we decided to pause this part and check the power setup before continuing.
-Before testing it again, we plan to have the wiring and power supply checked and make sure the circuit is powered off while making connections.
-When we reached this point, we ran out of time to rewire and reconnect the whole system, so this is where we had to stop for now. Even though we did not complete the full scanner, we still made progress with the servo, ultrasonic sensor, stepper motor, and driver, and learned a lot from the problems we ran into.
-Where We Ended
-Before adding the stepper motor, we had already completed a working prototype of the servo and ultrasonic scanner. The servo could move the sensor through different angles and the ultrasonic sensor could take distance measurements at each position.
-We then started developing the next version by adding the stepper motor. We successfully connected the A4988 driver, set the current limit, and got the stepper motor turning with Arduino code.
-We were not able to fully combine the stepper motor with the scanner before the end of the project because we ran into problems with the power setup. Instead of rushing the final connection, we stopped when we were unsure that the setup was safe.
-Even though the final version with both motors was not completed, we still moved from an idea to a working scanner prototype and then began developing a more advanced version. If we had more time, our next step would be to confirm the power setup and mount the servo scanner onto the stepper motor so both systems could work together.
+
+## Reflection
+
+In the meantime for creating this stepper motor, a lot of times the power setup was a little weird. The voltage and power needed for the stepper motor were much higher than what we were already using for the servo and sensor, and we were worried that connecting it incorrectly could damage the scanner or the Arduino. I actually received a small electrical shock at one point, and so we stopped working with the powered circuit instead of continuing to experiment with it after that incident.This made us realize that we needed to understand the power requirements and wiring more clearly before combining the stepper motor with the rest of the scanner. 
+
+
+In conclusion, we were not able to fully combine the stepper motor with the scanner before the end of the project because we ran into problems with the power setup. Time was not really enough. Instead of rushing the final connection, we stopped when we were unsure that the setup was safe.
+Even though the final version with both motors was not completed, we still moved from an idea to a working scanner prototype and then began developing a more advanced version. It was a great journey analysing and discussing with my peers about the motors and the servos. Learning with technologies like Youtube Videos or AI was pretty interesting, and I wish we could carry on this good progress some day!
