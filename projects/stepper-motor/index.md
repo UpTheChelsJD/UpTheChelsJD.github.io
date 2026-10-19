@@ -11,7 +11,15 @@ Our goal was to work towards making a simple 3D scanner with Arduino, with learn
 Our final idea is to have an ultrasonic distance sensor move in more than one direction so it can collect distance measurements from different positions. Instead of trying to build the entire scanner at once, we decided to first get one part working.
 
 ## Step 1:
-Ryan and I used ChatGPT with GPT-6 Astra to help develop the servo-and-ultrasonic scanner. This would be the first step of everything. We used it to generate starting code, explain unfamiliar functions, and understand how to make the movement and distance measurements happen in order.
+Ryan and I used ChatGPT with GPT-6 Astra to help develop the servo-and-ultrasonic scanner. We used it to generate starting code, explain unfamiliar functions, and understand how to make the movement and distance measurements happen in order. This would be the first step of everything. Firstly, however, the tools and materials we had to use were:
+
+- Arduino Uno R3
+- Ultrasonic distance sensor (HC-SR04)
+- Servo motor
+- Breadboard
+- Jumper wires
+- USB cable
+- Computer with Arduino IDE
 
 With a little prior experience for the maze, I was pretty familiar with the small mini-servos. I knew much of the code with a joystick handling the angle, but to make it automatic was one that required inquiry with AI. And so the new task was: **for every 15 degrees**, the sensor could move and take a reading at each position. 
 
@@ -22,85 +30,121 @@ Our first request was about combining the servo movement with distance detection
 `How do I make a servo stop every 15 degrees and use a distance sensor to detect an object and scan it?`
 
 AI suggested a **positional servo and an HC-SR04 ultrasonic sensor**. It generated a program that moved the servo from **15 to 165 degrees** in 15-degree intervals, took a measurement at each position, and then scanned back. The generated program included the movement loops, a function for reading distance, pauses between actions, and Serial output. This gave us a starting point for testing the sensor and servo together. After receiving the code, we asked follow-up questions about what the functions did, why the servo needed a delay, and how the sensor converted echo time into centimetres. Our questions became more focused as we worked through the program.
-Understanding How the Servo Stops
-One command we needed to understand was:
+
+## Understanding How the Servo Works
+
+The first part was about constructing the Arduino Board. The main template looked like this:
+
+Servo Motor
+
+| Servo Connection | Arduino Connection |
+|---|---|
+| Signal | Digital Pin 9 |
+| Power | 5V |
+| Ground | GND |
+
+Ultrasonic Sensor
+
+| Sensor Connection | Arduino Connection |
+|---|---|
+| VCC | 5V |
+| GND | GND |
+| Trig | Digital Pin 10 |
+| Echo | Digital Pin 11 |
+
+And for the code part, AI gave us this:
+
 ```cpp
-scannerServo.write(angle);
+#include <Servo.h>
+
+Servo scannerServo;
+
+const int servoPin = 9;
+const int trigPin = 10;
+const int echoPin = 11;
+
+const int stepAngle = 15;
+const int settleTime = 500;  // Wait before measuring, in milliseconds
+
+float readDistance() {
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+
+  unsigned long duration = pulseIn(echoPin, HIGH, 30000UL);
+
+  if (duration == 0) return -1;  // No echo received
+
+  float distance = duration / 58.0;
+
+  if (distance < 2 || distance > 400) return -1;
+
+  return distance;
+}
+
+void scanAtAngle(int angle) {
+  scannerServo.write(angle);
+  delay(settleTime);  // Let the servo reach and hold the angle
+
+  float distance = readDistance();
+
+  Serial.print(angle);
+  Serial.print(",");
+
+  if (distance < 0) {
+    Serial.println("no_reading");
+  } else {
+    Serial.println(distance, 1);
+  }
+
+  delay(500);  // Keep holding before moving again
+}
+
+void setup() {
+  Serial.begin(9600);
+
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  digitalWrite(trigPin, LOW);
+
+  scannerServo.attach(servoPin);
+  scannerServo.write(90);
+  delay(1000);
+
+  Serial.println("angle_deg,distance_cm");
+}
+
+void loop() {
+  // Scan forward: 15, 30, 45 ... 165 degrees
+  for (int angle = 15; angle <= 165; angle += stepAngle) {
+    scanAtAngle(angle);
+  }
+
+  // Scan backward, skipping endpoints already measured
+  for (int angle = 165 - stepAngle; angle > 15; angle -= stepAngle) {
+    scanAtAngle(angle);
+  }
+}
 ```
-This sends the positional servo a target angle. The servo still needs time to move there, so the code waits before measuring.
-These settings control the spacing between positions and the waiting time:
+### 1. Setting Up the Servo and Sensor
+
 ```cpp
+#include <Servo.h>
+
+Servo scannerServo;
+
+const int servoPin = 9;
+const int trigPin = 10;
+const int echoPin = 11;
+
 const int stepAngle = 15;
 const int settleTime = 500;
 ```
-The 15-degree interval came from my original request. The half-second settling time was included in the AI-generated code. It gives the servo time to reach its position before the sensor takes a reading. The program also waits another half second after measuring before moving again.
-Understanding these settings helped me follow the sequence on the actual setup: the servo moves, pauses, the sensor measures, and then the servo continues.
-Understanding the Sensor Readings
-We also wanted to understand how the sensor produced a distance. The program uses:
-```cpp
-unsigned long duration =
-pulseIn(echoPin, HIGH, 30000UL);
-float distance = duration / 58.0;
-```
-The ultrasonic sensor sends out sound, and `pulseIn()` measures the length of the returning echo signal in microseconds. Dividing that time by `58.0` gives an approximate distance in centimetres, accounting for the sound travelling to the object and back.
-The `30000UL` value sets a timeout. If no echo arrives within that time, the function returns zero rather than leaving the program waiting indefinitely.
-AI also included checks for failed measurements:
-```cpp
-if (duration == 0) return -1;
-if (distance < 2 || distance > 400) {
-return -1;
-}
-```
-The program uses `-1` to identify an unusable reading and prints `no_reading` in the Serial Monitor. This prevents a failed reading from appearing as a real distance of zero.
-The Serial Monitor prints the commanded angle followed by the measured distance. For example, `45,23.6` would mean a command of 45 degrees and a reading of 23.6 cm. This is an example of the format, not a recorded test result.
-Problems and Limits With Using AI
-AI was useful, but it did not mean that the answers automatically worked with our physical project.
-One issue was that AI had to make assumptions about our hardware. For example, some of the stepper code assumed a common 200-step motor and a certain driver setup. We still had to compare that information with the tutorial and the actual components in front of us.
-AI could also explain how something should be connected in theory, but it could not see every detail of our real wiring unless we gave it that information. This became especially important when we started dealing with the stepper motor power supply and current limit.
-There were also times when an AI response gave us much more code or information than we actually needed. We had to narrow down our questions and ask about one stage at a time. That is one reason we tested the project in separate parts instead of trying to build the full scanner immediately.
-Our process became:
-```text
-Come up with the next goal
-↓
-Ask AI or use the tutorial for a starting point
-↓
-Read and understand the important parts
-↓
-Build or wire it ourselves
-↓
-Test it on the real hardware
-↓
-Find what does not work
-↓
-Ask more specific questions or change the setup
-↓
-Test again
-```
-AI did most of the initial coding for the servo scanner and helped us develop the combined scanner code, but John and I still had to physically build the system, choose how we wanted it to move, test each component, compare the AI suggestions with the tutorial, and decide what changes actually worked.
-The biggest thing we learned from using AI was that getting code from AI is different from having a working project. We still needed to understand enough of the code to test it, recognize when something did not match our hardware, and explain what each major part was doing.
-Building the First Version
-We connected an HC-SR04 ultrasonic sensor to the Arduino and mounted it so it could move with the servo.
-Our current setup uses:
-```text
-HC-SR04 VCC → 5V
-HC-SR04 GND → GND
-HC-SR04 TRIG → Pin 10
-HC-SR04 ECHO → Pin 11
-Servo signal → Pin 9
-```
-<!-- PHOTO: Add a photo of the whole scanner setup here -->
-<img width="410" height="540" alt="93fe708cf5f01cc86b67540fb686ab30" src="https://github.com/user-attachments/assets/5e53eb87-e2c1-492c-afcd-d93bbabb872d" />
-<img width="410" height="540" alt="ce49f9da8a1fa438a202cf5a1ccbbaed" src="https://github.com/user-attachments/assets/b2635698-0a25-4f9e-b16e-2c45e636c6f8" />
 
-Figure 1. Our current servo and ultrasonic sensor setup.
-Figuring Out the Movement
-At first, our main focus was just getting the servo to move to specific positions instead of continuously moving.
-We used:
-```cpp
-scannerServo.write(angle);
-```
-and changed the angle by 15 degrees each time.
-The movement is:
+First, I imported the Servo library to control the servo motor. I then assigned Pin 9 to the servo motor and Pins 10 and 11 to the ultrasonic sensor. I also set `stepAngle` to 15, meaning the servo moves 15 degrees at a time. The movement of the servo would be:
 ```text
 15°
 30°
@@ -110,16 +154,87 @@ The movement is:
 ...
 165°
 ```
-We also realized that the sensor should not measure immediately after the servo starts moving. The servo needs time to reach its position first.
-That is why the code includes:
+Moreover, the `settleTime` of 500 milliseconds gives the servo time to reach its position before measuring the distance.
+
+### 2. Measuring Distance
+
 ```cpp
-delay(settleTime);
+digitalWrite(trigPin, HIGH);
+delayMicroseconds(10);
+digitalWrite(trigPin, LOW);
+
+unsigned long duration = pulseIn(echoPin, HIGH, 30000UL);
+
+float distance = duration / 58.0;
 ```
-The delay gives the servo time to stop before the distance measurement is taken.
-This was important because the sensor would be less useful if it was taking measurements while it was still moving.
-Distance Measurements
-After the servo reaches an angle, the ultrasonic sensor sends out a pulse.
-The Arduino measures how long the echo takes to return and converts that time into centimeters.
+
+The ultrasonic sensor sends out sound waves that bounce off nearby objects and return to the sensor. The Arduino measures how long the sound waves take to return using `pulseIn()`. It then divides the time by 58 to calculate the approximate distance in centimeters. For example, if the sound waves take 1160 microseconds to return, the object is about 20 cm away.
+
+### 3. Moving the Servo Motor
+
+```cpp
+void scanAtAngle(int angle) {
+  scannerServo.write(angle);
+  delay(settleTime);
+
+  float distance = readDistance();
+```
+
+I created a function called `scanAtAngle()` to move the servo and measure the distance. The `scannerServo.write(angle)` command moves the servo to a specific angle. After waiting 500 milliseconds, the Arduino calls `readDistance()` to measure how far away an object is.
+
+### 4. Displaying the Measurements
+
+```cpp
+Serial.print(angle);
+Serial.print(",");
+
+if (distance < 0) {
+  Serial.println("no_reading");
+} else {
+  Serial.println(distance, 1);
+}
+```
+
+This section displays the angle and measured distance in the Serial Monitor. If the ultrasonic sensor cannot get a valid reading, it displays `no_reading` instead. For example, the output could look like this:
+
+```text
+angle_deg,distance_cm
+15,34.2
+30,28.6
+45,21.3
+60,15.7
+```
+
+This allows me to see the distance of an object at different angles.
+
+### 5. Creating the Scanning Motion
+
+```cpp
+void loop() {
+  for (int angle = 15; angle <= 165; angle += stepAngle) {
+    scanAtAngle(angle);
+  }
+
+  for (int angle = 165 - stepAngle; angle > 15; angle -= stepAngle) {
+    scanAtAngle(angle);
+  }
+}
+```
+
+Finally, I used two `for` loops to make the servo scan back and forth automatically. The first loop moves the servo from 15 to 165 degrees, increasing by 15 degrees each time. The second loop moves it backward from 150 (not 165 because it was 165 just a few seconds ago) to 30 degrees. After that, the process repeats continuously. This allows the ultrasonic sensor to scan different directions without manually controlling the servo.
+
+Here, this is our final setup for the basic servo + ultrasonic distance sensor:
+
+<img width="410" height="540" alt="93fe708cf5f01cc86b67540fb686ab30" src="https://github.com/user-attachments/assets/5e53eb87-e2c1-492c-afcd-d93bbabb872d" />
+<img width="410" height="540" alt="ce49f9da8a1fa438a202cf5a1ccbbaed" src="https://github.com/user-attachments/assets/b2635698-0a25-4f9e-b16e-2c45e636c6f8" />
+
+And after trying it out, Ryan and I got to this video with this progress:
+
+<video width="700" controls style="max-width: 100%;">
+<source src="videos/servo-scanner-test.mp4" type="video/mp4">
+</video>
+
+In the video, you could see a few numbers popping onto the Monitor screen. This is because the Arduino measures how long the echo takes to return and converts that time into centimeters.
 The Serial Monitor gives us results like:
 ```text
 15,35.2
@@ -132,89 +247,18 @@ For example:
 ```
 means the servo was around 45 degrees and the detected object was about 23.6 cm away.
 This gives us two pieces of information for every measurement:
-angle + distance
-Troubleshooting the Scan
-One thing we had to think about was the timing between moving the servo and measuring the object.
-If the program moves too quickly, the sensor can take a measurement before the servo has fully reached its angle.
-We used:
-```cpp
-const int settleTime = 500;
-```
-to make the Arduino wait half a second.
-This made the scan slower, but it also made each measurement happen after the servo had time to stop.
-We also added a check for readings outside the useful range:
-```cpp
-if (distance < 2 || distance > 400) {
-return -1;
-}
-```
-Instead of treating a bad measurement as a real distance, the program prints:
-```text
-no_reading
-```
-This helped us separate useful measurements from ones where the ultrasonic sensor did not receive a good echo.
-Current Code
-```cpp
-#include <Servo.h>
-Servo scannerServo;
-const int servoPin = 9;
-const int trigPin = 10;
-const int echoPin = 11;
-const int stepAngle = 15;
-const int settleTime = 500;
-float readDistance() {
-digitalWrite(trigPin, LOW);
-delayMicroseconds(2);
-digitalWrite(trigPin, HIGH);
-delayMicroseconds(10);
-digitalWrite(trigPin, LOW);
-unsigned long duration =
-pulseIn(echoPin, HIGH, 30000UL);
-if (duration == 0) return -1;
-float distance = duration / 58.0;
-if (distance < 2 || distance > 400) {
-return -1;
-}
-return distance;
-}
-void scanAtAngle(int angle) {
-scannerServo.write(angle);
-delay(settleTime);
-float distance = readDistance();
-Serial.print(angle);
-Serial.print(",");
-if (distance < 0) {
-Serial.println("no_reading");
-}
-else {
-Serial.println(distance, 1);
-}
-delay(500);
-}
-void setup() {
-Serial.begin(9600);
-pinMode(trigPin, OUTPUT);
-pinMode(echoPin, INPUT);
-scannerServo.attach(servoPin);
-scannerServo.write(90);
-delay(1000);
-}
-void loop() {
-for (int angle = 15; angle <= 165; angle += stepAngle) {
-scanAtAngle(angle);
-}
-for (int angle = 150; angle > 15; angle -= stepAngle) {
-scanAtAngle(angle);
-}
-}
-```
-Current Test
-At this point, the scanner can move the ultrasonic sensor back and forth in 15-degree steps and collect a distance measurement at each angle.
-<video width="700" controls style="max-width: 100%;">
-<source src="videos/servo-scanner-test.mp4" type="video/mp4">
-</video>
-John and I testing the servo scanner as it stops at different angles and takes distance measurements.
-Adding the Stepper Motor
+angle + distance, perfect for future 3D imprinting!
+
+## Problems and Limits With Using AI
+
+Surely enough the AI did its job, but it did not mean that the answers automatically worked with our physical project. A lot of times it wasn't the code that didn't work. Sometimes, the wires would be loose or sometimes the Serial Output would be different. Thus, we still had to compare the AI code's information with the tutorial and the actual components in front of us.
+
+After all, AI did most of the initial coding for the servo scanner and helped us develop the combined scanner code, but Ryan and I still had to physically build the system, choose how we wanted it to move, test each component, compare the AI suggestions with the tutorial, and decide what changes actually worked.
+
+The biggest thing we learned from using AI was that getting code from AI is different from having a working project. We still needed to understand enough of the code to test it, recognize when something did not match our hardware, and explain what each major part was doing.
+
+## Adding the Stepper Motor
+
 After getting the servo and distance sensor working, John and I moved on to the next part of our plan: adding a stepper motor.
 The goal of the stepper motor is to eventually move the scanner in another direction while the servo changes the angle of the distance sensor. This should let us collect measurements from more positions instead of only sweeping side to side.
 We had not worked with this type of stepper motor and driver before, so we followed this tutorial:
