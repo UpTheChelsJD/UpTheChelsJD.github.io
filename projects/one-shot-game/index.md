@@ -209,7 +209,7 @@ And after communicating with my AI assistant chatbot, I learnt about the framewo
 
 ![](../../images/70.png)
 
-1. So I first had to set up the code of
+So I first had to set up the code of
 
 ```javascript
 let rocks = [];
@@ -217,7 +217,7 @@ let rocks = [];
 
 inside my variables and also the RESETGAME() part, as it was important to remove all rocks after the round.
 
-2. Then, for the heartbeat of my rock code being spawned randomly on the map, I had to copy most parts of the apple's code. As both the rocks and the apples are randomly placed, I copied the `placeApple()` code to my `placeRock()` code for the same functions and lines of code. I also had to add some restrictions, like not putting the rocks **on the snake, the apple, or other rocks**, but after understanding, I got from.
+Then, for the heartbeat of my rock code being spawned randomly on the map, I had to copy most parts of the apple's code. As both the rocks and the apples are randomly placed, I copied the `placeApple()` code to my `placeRock()` code for the same functions and lines of code. I also had to add some restrictions, like not putting the rocks **on the snake, the apple, or other rocks**, but after understanding, I got from.
 
 ```javascript
 function placeRock() {
@@ -249,13 +249,13 @@ function placeRock() {
   }
 }
 ```
-3. I then, with some minimal help from AI, added the triggering system, the self-collision if the snake hit any of the rocks, and the drawing and painting of the rock itself inside the `style.css` code.
+I then, with some minimal help from AI, added the triggering system, the self-collision if the snake hit any of the rocks, and the drawing and painting of the rock itself inside the `style.css` code.
 
 ![](../../images/72.png)
 ![](../../images/24.png)
 ![](../../images/71.png)
 
-4. After running through some mistakes and correcting a few lines, especially when my variable is **rocks** but often times I write **rock**, here I made it start running with this particular new code!
+After running through some mistakes and correcting a few lines, especially when my variable is **rocks** but often times I write **rock**, here I made it start running with this particular new code!
 
 <video style="width:100%; max-width:700px;" controls>
   <source src="../../videos/90.mp4" type="video/mp4">
