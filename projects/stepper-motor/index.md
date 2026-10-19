@@ -231,11 +231,11 @@ Here, this is our final setup for the basic servo + ultrasonic distance sensor:
 And after trying it out, Ryan and I got to this video with this progress:
 
 <video width="700" controls style="max-width: 100%;">
-<source src="videos/../../100.mp4" type="video/mp4">
+<source src="../../videos/100.mp4" type="video/mp4">
 </video>
 
 <video width="700" controls style="max-width: 100%;">
-<source src="videos/../../101.mp4" type="video/mp4">
+<source src="../../videos/101.mp4" type="video/mp4">
 </video>
 
 In the video, you could see a few numbers popping onto the Monitor screen. This is because the Arduino measures how long the echo takes to return and converts that time into centimeters.
@@ -293,7 +293,7 @@ This part took longer than we expected because we ran into a few problems. At fi
 We checked the multimeter settings, where the probes were connected, and how we were measuring the driver. Once we got the multimeter working again, we continued adjusting the small potentiometer on the A4988 while checking the reading.
 
 <video width="700" controls style="max-width: 100%;">
-<source src="videos/../../102.mp4" type="video/mp4">
+<source src="../../videos/102.mp4" type="video/mp4">
 </video>
 
 
@@ -360,7 +360,7 @@ This first test helped us separate the project into smaller pieces. Before tryin
 ## THE FINAL WORKING STEPPER MOTOR IS HERE
 
 <video width="700" controls style="max-width: 100%;">
-<source src="videos/../../103.mp4" type="video/mp4">
+<source src="../../videos/103.mp4" type="video/mp4">
 </video>
 
 ## Reflection
