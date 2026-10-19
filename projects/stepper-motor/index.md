@@ -1,20 +1,27 @@
-3D Scanner Project
-Starting the Project
-For this project, John and I wanted to work toward making a simple 3D scanner with Arduino.
+# 3D Scanner Project With Ryan
+
+## Starting the Project
+
+For this project, we were encouraged to do as much as we possibly could in terms of creating a 3D scanner. Before starting with stepper motors, we first visited the museum of our school to have a look at their 3D prototype. And it was surely fascinating to see that a real-life object could be described into 0s and 1s.  
+
+Our goal was to work towards making a simple 3D scanner with Arduino, with learning about motion sensors, distance sensors, mini-motors, and stepper motors being the firststep. Our task for the few classes was like:
+
+`Test Servo in terms of moving the sensor → making it stop at an angle and measure a distance  →change to stepper-motor  → make it move again`
+
 Our final idea is to have an ultrasonic distance sensor move in more than one direction so it can collect distance measurements from different positions. Instead of trying to build the entire scanner at once, we decided to first get one part working.
-Our first goal was:
-Servo moves the sensor → stops at an angle → measures distance → moves again
-Later, we will attempt to add a stepper motor so the scanner can move in another direction and collect more measurements.
-Starting with only the servo made the project easier to test because we could focus on one movement system before adding another motor.
-How We Used AI
-John and I used ChatGPT with GPT-6 Astra to help develop the servo and ultrasonic scanner. We used it to generate starting code, explain unfamiliar functions, and understand how to make the movement and distance measurements happen in order.
-My idea was to make the servo stop every 15 degrees so the sensor could take a reading at each position. Most of the starting program came from AI. John and I chose the movement interval, connected the components, mounted the sensor, and tested the setup.
-What We Asked AI
-My first request was about combining the servo movement with distance detection. A shortened version of the prompt was:
-How do I make a servo stop every 15 degrees and use a distance sensor to detect an object and scan it?
-AI suggested a positional servo and an HC-SR04 ultrasonic sensor. It generated a program that moved the servo from 15 to 165 degrees in 15-degree intervals, took a measurement at each position, and then scanned back.
-The generated program included the movement loops, a function for reading distance, pauses between actions, and Serial output. This gave us a starting point for testing the sensor and servo together.
-After receiving the code, we asked follow-up questions about what the functions did, why the servo needed a delay, and how the sensor converted echo time into centimetres. Our questions became more focused as we worked through the program.
+
+## Step 1:
+Ryan and I used ChatGPT with GPT-6 Astra to help develop the servo-and-ultrasonic scanner. This would be the first step of everything. We used it to generate starting code, explain unfamiliar functions, and understand how to make the movement and distance measurements happen in order.
+
+With a little prior experience for the maze, I was pretty familiar with the small mini-servos. I knew much of the code with a joystick handling the angle, but to make it automatic was one that required inquiry with AI. And so the new task was: **for every 15 degrees**, the sensor could move and take a reading at each position. 
+
+## What We Asked AI
+
+Our first request was about combining the servo movement with distance detection. A shortened version of the prompt was:
+
+`How do I make a servo stop every 15 degrees and use a distance sensor to detect an object and scan it?`
+
+AI suggested a **positional servo and an HC-SR04 ultrasonic sensor**. It generated a program that moved the servo from **15 to 165 degrees** in 15-degree intervals, took a measurement at each position, and then scanned back. The generated program included the movement loops, a function for reading distance, pauses between actions, and Serial output. This gave us a starting point for testing the sensor and servo together. After receiving the code, we asked follow-up questions about what the functions did, why the servo needed a delay, and how the sensor converted echo time into centimetres. Our questions became more focused as we worked through the program.
 Understanding How the Servo Stops
 One command we needed to understand was:
 ```cpp
