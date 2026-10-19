@@ -251,13 +251,18 @@ function placeRock() {
 ```
 3. I then, with some minimal help from AI, added the triggering system, the self-collision if the snake hit any of the rocks, and the drawing and painting of the rock itself inside the `style.css` code.
 
+![](../../images/72.png)
+![](../../images/24.png)
+![](../../images/71.png)
+
+4. After running through some mistakes and correcting a few lines, especially when my variable is **rocks** but often times I write **rock**, here I made it start running with this particular new code!
 
 
 ## Reflection:
 
 After many classes and a few hours of research, I feel more confident learning about JavaScript and the differences in each section. For example, now I know that the HTML is the main body and controls the canvas page, while STYLE.CSS controls the small nuanced details within the screen, while the Javascript is the main heartbeat of the whole game. These were unfamiliar to me just a week ago, and it surprises me that I can learn this much in this short amount of period. I have learnt that it is always fine to incorporate AI in coding, but being honest and having a good intent to improve is always a good way of learning.
 
-To me, approaching software in the future is always going to be a challenge without AI and ,to be really honest, very time-consuming without support. I treat every software class, coding class, Arduino Electrical Engineering class, or even those lecture classes with passion and try to learn lots from them. My attitude on technology is that using AI is way more productive, but understanding and improving are more important.
+To me, approaching software in the future is always going to be a challenge without AI and ,to be really honest, very time-consuming without support. I treat every software class, coding class, Arduino Electrical Engineering class, or even those lecture classes with passion and try to learn lots from them. My attitude on technology is that using AI is way more productive, but understanding and improving self-learning and self-teaching skills are more important.
 
 
 
