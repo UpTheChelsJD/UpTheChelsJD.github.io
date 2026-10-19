@@ -207,6 +207,50 @@ As the wall warping was a huge success in which I learnt how to code some parts 
 
 And after communicating with my AI assistant chatbot, I learnt about the framework of my project and how it would be executioned step by step. Here are the procedures:
 
+![](../../images/70.png)
+
+1. So I first had to set up the code of
+
+```javascript
+let rocks = [];
+```
+
+inside my variables and also the RESETGAME() part, as it was important to remove all rocks after the round.
+
+2. Then, for the heartbeat of my rock code being spawned randomly on the map, I had to copy most parts of the apple's code. As both the rocks and the apples are randomly placed, I copied the `placeApple()` code to my `placeRock()` code for the same functions and lines of code. I also had to add some restrictions, like not putting the rocks **on the snake, the apple, or other rocks**, but after understanding, I got from.
+
+```javascript
+function placeRock() {
+  while (true) {
+    const rock = { x: ???, y: ??? };           // random square, like placeApple
+    const onSnake = snake.some(s => ???);       // hint: same check as in placeApple
+    const onApple = ???;                        // hint: compare to apple.x and apple.y
+    const onRock  = rocks.some(r => ???);
+    if (!onSnake && !onApple && !onRock) {
+      rocks.push(rock);
+      break;
+    }
+  }
+}
+```
+to
+
+```javascript
+function placeRock() {
+  while (true) {
+    const rock = { x: Math.floor(Math.random() * GRID), y: Math.floor(Math.random() * GRID) };
+    const onSnake = snake.some(s => s.x === rock.x && s.y === rock.y);
+    const onApple = apple.x === rock.x && apple.y === rock.y;
+    const onRock  = rocks.some(r => r.x === rock.x && r.y === rock.y);
+    if (!onSnake && !onApple && !onRock) {
+      rocks.push(rock);
+      break;
+    }
+  }
+}
+```
+3. I then, with some minimal help from AI, added the triggering system, the self-collision if the snake hit any of the rocks, and the drawing and painting of the rock itself inside the `style.css` code.
+
 
 
 ## Reflection:
