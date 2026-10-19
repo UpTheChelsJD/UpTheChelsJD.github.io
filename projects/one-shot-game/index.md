@@ -185,7 +185,7 @@ At the end, I understood that if the head approaches zero in **any x or y** dire
 
 I started the code with this unchanged code in the `// Wall Collision` part :
 
-![](../../images/20.png)
+![](../../images/81.png)
 
 And then I changed that same code to this:
 
