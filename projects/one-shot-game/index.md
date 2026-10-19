@@ -201,6 +201,14 @@ And here is my final result:
   <source src="../../videos/7.mp4" type="video/mp4">
 </video>
 
+## DAY 3:
+
+As the wall warping was a huge success in which I learnt how to code some parts myself, I now challenged myself to create entities that would spawn in to block the snake's path for the apples. I called them rocks, and they were just 1 by 1 pixel grey blocks that would spawn **after every new point**. This time, I only gave the AI chatbot commands to give the **"most primitive framework and code"** so that I could write down the rest based on my understanding.
+
+And after communicating with my AI assistant chatbot, I learnt about the framework of my project and how it would be executioned step by step. Here are the procedures:
+
+
+
 ## Reflection:
 
 After many classes and a few hours of research, I feel more confident learning about JavaScript and the differences in each section. For example, now I know that the HTML is the main body and controls the canvas page, while STYLE.CSS controls the small nuanced details within the screen, while the Javascript is the main heartbeat of the whole game. These were unfamiliar to me just a week ago, and it surprises me that I can learn this much in this short amount of period. I have learnt that it is always fine to incorporate AI in coding, but being honest and having a good intent to improve is always a good way of learning.
