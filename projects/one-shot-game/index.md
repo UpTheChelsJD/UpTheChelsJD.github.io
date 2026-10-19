@@ -189,7 +189,7 @@ I started the code with this unchanged code in the `// Wall Collision` part :
 
 And then I changed that same code to this:
 
-![](../../images/24.png)
+![](../../images/27.png)
 
 And here is my final result:
 
