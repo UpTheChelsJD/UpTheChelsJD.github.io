@@ -17,7 +17,11 @@ First, before the connection between my game and the controller, I would have to
 | VRy | A5 |
 | SW | Digital pin 2 |
 
+![](../../images/2323.png)
+
 The Arduino reads the joystick’s position and sends words to the computer through the USB serial connection at 9600 baud.
+
+
 
 For example, this section detects vertical movement:
 
