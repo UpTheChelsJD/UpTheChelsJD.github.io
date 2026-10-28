@@ -33,3 +33,12 @@ Ryan and I learnt and made a primitive prototype-like stepper motor to work. It 
 I've started to create a one-shot game with our own school's AI GPT. I've made an easy snake game to start learning HTML/CSS/JS coding!
 
 [**View Project →**](projects/one-shot-game/)
+
+---
+
+### Video Game and Control
+
+After creating the game one-shot, my teammate Steven Shi and I built on the game by adding controls (joystick) that could physically control the game.
+
+[**View Project →**](projects/video-game-control/)
+
