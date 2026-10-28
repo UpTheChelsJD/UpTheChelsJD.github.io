@@ -21,7 +21,13 @@ First, before the connection between my game and the controller, I would have to
 
 The Arduino reads the joystick’s position and sends words to the computer through the USB serial connection at 9600 baud.
 
+<video style="width:100%; max-width:700px;" controls>
+  <source src="../../videos/3434.mp4" type="video/mp4">
+</video>
 
+<video style="width:100%; max-width:700px;" controls>
+  <source src="../../videos/4545.mp4" type="video/mp4">
+</video>
 
 For example, this section detects vertical movement:
 
