@@ -72,25 +72,25 @@ ChatGPT ran simulated checks for direction changes, button presses, and connecti
 
 ### My Own Testing
 
-- **What I tried:** [Describe connecting the Arduino and testing each direction and the button.]
-- **What happened:** [Describe exactly what worked or failed.]
-- **What I changed:** [Explain your troubleshooting step and why you chose it.]
-- **What happened afterward:** [Record the result, even if the problem remained.]
+- **What I tried:** Personally, I understood the mechanical part a lot better than before. I understood more about where the pins go and how to work with an existing code to make it less sensitive and more punchy. I learnt also the `low` and the `high` of a status of a pin getting pressed down
+- **What happened:** Actually, for Steven Shi's final model, he at first didn't have a lot of stuff ready. He had a few game modes: jump, spider, zigzag, and ship. For the ship, it didn't follow the rules of gravity. For the spider, he wanted to control the spider with up and down, **not with the press down button**. He wanted the press down button to be the one that could press **restart** or **back-to-menu**. This made the first few attempts not work, so we troubleshooted step by step by asking AI.
+
+![](../../images/787.png)
+
+We eventually got his to work as well, and it was very great to see the fruitfulness of the project.
+
+- **What happened afterward:** Here is the final result of my own snake game:
+
+<video style="width:100%; max-width:700px;" controls>
+  <source src="../../videos/9898.mp4" type="video/mp4">
+</video>
 
 ## Managing the Project
 
 Switching to Snake reduced the number of controls I needed to handle and gave me a smaller prototype to work toward. My priorities were connecting the Arduino, testing the four directions, and checking the retry button.
 
-[Add one specific example of how you used your class time, followed through on a task, or kept working after a setback.]
-
 ## My Reflection
 
-The part I found most interesting was [your example], because [your reason]. I felt [your feeling] when [a specific moment from the project].
+Overall, it was a great fun few days going over the software part of the project. The part I found most interesting was troubleshooting the code, because it was very fruitful to see the feedback we got from AI and then use it to build off the current model. I felt really proud when both Steven and I finished the dash game and also my snake game together in a span of two days.
 
-This project showed me that getting code from AI is only one part of making a prototype. I still need to understand what the code is supposed to do, test it with my hardware, and describe problems clearly when something goes wrong.
-
-My prototype currently [describe its actual working state]. My next step is to [name one specific improvement or remaining test].
-
-## Project Evidence
-
-[Insert a photo of your circuit, a short demonstration video, and links to your Arduino code and Snake HTML file.]
+In general, this project showed me that getting code from AI is only one part of making a prototype. I still need to understand what the code is supposed to do, test it with my hardware, and describe problems clearly when something goes wrong.
