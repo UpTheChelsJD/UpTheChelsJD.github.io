@@ -1,8 +1,4 @@
 
----
-layout: default
-title: "Innovator's Journal - DIY 3D Scanner"
----
 
 # Innovator's Journal
 ## Building an Arduino-Based 3D Scanner
