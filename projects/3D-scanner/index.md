@@ -34,35 +34,23 @@ However, we quickly realized that designing the system was much easier than actu
        360° Rotation
 ```
 
-**Image: Initial Design Concept**
-
-[Insert photograph or sketch of our original scanner design here]
-
----
-
 ## 2. Our Original Plan: Using a Shaft
 
-We initially took inspiration from existing DIY 3D scanners that used a threaded shaft to move a sensor vertically.
-
-The mechanism seemed relatively straightforward. A stepper motor would rotate a threaded lead screw, and a nut connected to the sensor carriage would travel along the screw. Two smooth guide rods would prevent the carriage from rotating or becoming unstable.
-
-This approach appealed to us because it provided a clear way to convert rotational movement into vertical movement.
-
-Our original idea was:
+We initially took inspiration from existing DIY 3D scanners that used a threaded shaft to move a sensor vertically. That mechanism seemed relatively straightforward. A stepper motor would rotate a threaded lead screw, and a nut connected to the sensor carriage would travel along the screw. Two smooth guide rods would prevent the carriage from rotating or becoming unstable.
 
 **Stepper Motor → Lead Screw → Moving Carriage → IR Sensor**
 
-But when we checked the materials available in our robotics lab, we encountered our first major problem.
+fdsf
 
-We did not have a T8 lead screw or two smooth 8 mm guide rods.
+The above picture was what we tried to aim for, yet **when we checked the materials available in our robotics lab**, we encountered our **FIRST MAJOR PROBLEM**.
+
+**We did not have a T8 lead screw or two smooth 8 mm guide rods.**
 
 We did, however, have a long hexagonal metal rod that was approximately 6–7 mm thick.
 
 At first, we wondered whether we could simply substitute this rod for the threaded shaft. After exploring how lead screws work, we realized that this would not be possible without modifying the mechanism. The hexagonal rod had no threads, meaning it could not move a nut up and down through rotation.
 
-This was frustrating because it meant our original mechanical design would not work with the components we had.
-
-Instead of buying an entirely new set of materials, we decided to investigate another approach.
+This was frustrating because it meant our original mechanical design would not work with the components we had. And so instead of buying an entirely new set of materials, we decided to investigate another approach - belts
 
 ### Design Documentation
 
