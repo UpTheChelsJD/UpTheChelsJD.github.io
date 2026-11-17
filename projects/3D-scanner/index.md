@@ -210,3 +210,6 @@ However, there is a significant difference between receiving an idea and impleme
 ## Final Thoughts at this Juncture of Time
 
 Looking back at our work so far, this project has been more complicated than we expected. We had thought of the task being simple, but it clearly isn't that easy! We will work harder for the final week and push for a good result!
+
+[← Back to All Projects](../../)
+
