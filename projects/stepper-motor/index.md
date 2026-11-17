@@ -370,3 +370,6 @@ In the meantime for creating this stepper motor, a lot of times the power setup 
 
 In conclusion, we were not able to fully combine the stepper motor with the scanner before the end of the project because we ran into problems with the power setup. Time was not really enough. Instead of rushing the final connection, we stopped when we were unsure that the setup was safe.
 Even though the final version with both motors was not completed, we still moved from an idea to a working scanner prototype and then began developing a more advanced version. It was a great journey analysing and discussing with my peers about the motors and the servos. Learning with technologies like Youtube Videos or AI was pretty interesting, and I wish we could carry on this good progress some day!
+
+[← Back to All Projects](../../)
+
