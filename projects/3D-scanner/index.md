@@ -6,7 +6,7 @@ I am so glad I could do this project over a span of many days. I have learnt a l
 
 ---
 
-## 1. How We Started
+## How We Started
 
 When our team first started this project, we wanted to build something that combined mechanical engineering, programming, and 3D design. We knew our task was about using the stepper motors, so we decided to create a DIY 3D scanner using Arduino and many motors and the materials available in our robotics lab.
 
@@ -34,7 +34,7 @@ However, we quickly realized that designing the system was much easier than actu
        360° Rotation
 ```
 
-## 2. Our Original Plan: Using a Shaft
+## Our Original Plan: Using a Shaft
 
 We initially took inspiration from existing DIY 3D scanners that used a threaded shaft to move a sensor vertically. That mechanism seemed relatively straightforward. A stepper motor would rotate a threaded lead screw, and a nut connected to the sensor carriage would travel along the screw. Two smooth guide rods would prevent the carriage from rotating or becoming unstable.
 
@@ -50,165 +50,58 @@ We did, however, have a long hexagonal metal rod that was approximately 6–7 mm
 
 At first, we wondered whether we could simply substitute this rod for the threaded shaft. After exploring how lead screws work, we realized that this would not be possible without modifying the mechanism. The hexagonal rod had no threads, meaning it could not move a nut up and down through rotation.
 
-This was frustrating because it meant our original mechanical design would not work with the components we had. And so instead of buying an entirely new set of materials, we decided to investigate another approach - belts
+This was frustrating because it meant our original mechanical design would not work with the components we had. And so instead of buying an entirely new set of materials, we decided to investigate another approach - belts.
 
-### Design Documentation
+## Changing Our Design: From Shaft to Belt
 
-**Image 1: Original Shaft-Based Design**
+After realizing that our original mechanism would not be practical, we began exploring how belts and pulleys could produce vertical movement. We wanted to achieve the same result as the lead screw system: moving the Sharp IR sensor up and down while keeping it stable.
 
-[Insert image here]
-
-**Image 2: The Hexagonal Rod Available in Our Lab**
-
-[Insert image here]
-
----
-
-## 3. Changing Our Design: From Shaft to Belt
-
-After realizing that our original mechanism would not be practical, we began exploring how belts and pulleys could produce vertical movement.
-
-We wanted to achieve the same result as the lead screw system: moving the Sharp IR sensor up and down while keeping it stable.
-
-Our revised concept used a timing belt driven by a stepper motor.
+Our revised concept used a timing belt driven by two stepper motors - one on top and the other down the bottom.
 
 The motor would rotate a pulley at the bottom of the structure. The belt would run around this pulley and another pulley at the top, forming a continuous loop.
 
-When the motor rotated, the belt would move. A carriage attached to one side of the belt would then travel vertically.
+When the motor rotated, the belt would move. A carriage attached to one side of the belt would then travel vertically (**this we would need to CAD in future classes**) The Sharp IR sensor would be secured to this carriage rather than directly attached to the belt.
 
-The Sharp IR sensor would be secured to this carriage rather than directly attached to the belt.
-
-Our new mechanism was:
-
-**Stepper Motor → Pulley → Timing Belt → Moving Carriage → Sharp IR Sensor**
-
-One of the more difficult concepts for us was understanding how a motor spinning in circles could create upward and downward movement.
-
-We eventually understood that the pulley does not need to change the direction of the motor's rotation. If the motor shaft is positioned horizontally, the pulley rotates in a vertical plane, moving the belt upward on one side and downward on the other.
-
-This allowed us to think about the vertical structure in a completely different way.
-
-We also explored the possibility of using our hexagonal rod as a guide for the moving carriage. The rod would help keep the sensor aligned while the belt provided the actual movement.
-
-We investigated an HTD 350-5M timing belt, which introduced additional considerations such as pulley compatibility, belt length, and tension.
-
-Although this design still required further development, it gave us a more realistic direction for the project.
 
 ### Design Documentation
 
-**Image 3: Belt and Pulley Mechanism**
+**Belt and Pulley Mechanism**
 
-[Insert image here]
+![](../../images/S2.png)
 
-**Image 4: Vertical Structure CAD or Prototype**
-
-[Insert image here]
+![](../../images/S3.png)
 
 ### Design Reflection
 
-What did we learn from changing the mechanism?
+This was actually very rewarding. We miscalculated the first time, and we only have one motor running right now. Next class, we would need to add another motor to make the top part spin, so we could have a spinning belt. The design is pretty good and cohesive according to plan. We now need to upgrade some parts of our design and make it more stable. We need to CAD out the sharp structure connection part onto the stepper motor's belt so it can move up and down.
 
-[Write reflection here]
+Yet, here is just a video to show how we were able to make one connection part work! This would mean that we could replicate this into two or even 3!
+
+VIDEO
 
 ---
 
-## 4. Designing the Rotating Platform in Onshape
+## Designing the Rotating Platform in Onshape
 
-While working on the vertical mechanism, we also spent a significant amount of time developing the rotating platform.
-
-This part was especially important because the object needs to remain stable while the motor rotates it through 360 degrees.
+While working on the vertical mechanism, we also spent a significant amount of time developing the rotating platform. This part was especially important because the object needs to remain stable while the motor rotates it through 360 degrees.
 
 We originally thought that creating a circular platform would be one of the easiest parts of the project.
 
-However, the connection between the platform and the stepper motor turned out to be much more complicated than we expected.
+However, the connection between the platform and the stepper motor turned out to be much more complicated than we expected. It would often times bend and not stick properly, causing us to use many prototypes and making the radius a little larger every time.
 
-We used Onshape to create multiple versions of the platform. We experimented with different shapes, dimensions, and mounting structures.
+![](../../images/S4.png)
 
-### Our First Prototype
+The above is our final design with the stepper motor on!
 
-Our first CAD model was a basic circular platform that could be attached to the motor shaft.
+### Some Problems Regarding our first prototype.
 
-Although the design looked reasonable in Onshape, we found that the platform was not sufficiently stable when connected to the motor.
+Wachi took a long time first testing the multimeter, and after many classes, the wiring of the stepper motors were still not fixed. I ended up helping him, and a crucial part he forgot a little bit about was how the stepper motors had to match up together in order to function properly. With four nodes of **red, green, blue, and black**, each node is correspondent with another, and matching is very important.
 
-The platform could wobble, which was a serious problem because an unstable object would make the scanner's measurements less consistent.
+Hence, here is just a video to show our current progress with the motors and how they are spinning already!
 
-This made us realize that simply attaching a plate to a motor was not enough.
 
-We needed to think about how the plate was supported, how the motor shaft connected to it, and whether the design could maintain its alignment during rotation.
+## What We Have Understood, What We Have Learnt, and What We Have Used.
 
-**Image 5: First Rotating Platform CAD**
-
-[Insert image here]
-
-### Redesigning the Motor Connection
-
-For our next version, we returned to Onshape and modified the mounting structure.
-
-We experimented with different connections between the circular platform and the motor shaft.
-
-Our main goal was to make the platform more secure and reduce unnecessary movement during rotation.
-
-However, some of these redesigned versions still had stability problems.
-
-This led to more adjustments.
-
-We changed dimensions, reconsidered the geometry of the motor connection, and continued creating new CAD models.
-
-**Image 6: Second Rotating Platform CAD**
-
-[Insert image here]
-
-### Further Prototypes and Improvements
-
-After several iterations, we began paying more attention to the relationship between the physical motor and the CAD model.
-
-We learned that even if a design appeared correct on a computer, there could still be problems when we attempted to assemble it.
-
-For example, a connection might be too loose, slightly misaligned, or unable to support the rotating platform as expected.
-
-We continued redesigning the platform to address these issues.
-
-This became one of the most time-consuming parts of our project, but it also taught us a lot about the difference between digital modeling and physical engineering.
-
-Rather than settling for a design that was unstable, we repeatedly went back to Onshape to improve it.
-
-**Image 7: Third Rotating Platform CAD**
-
-[Insert image here]
-
-**Image 8: Later CAD Versions or Physical Prototypes**
-
-[Insert image here]
-
-### What We Learned
-
-One of the biggest lessons from this stage was that a functioning mechanism needs more than just correct dimensions.
-
-It also needs structural stability, proper alignment, and a reliable connection between components.
-
-Our repeated CAD redesigns helped us develop a better understanding of mechanical engineering and the importance of testing prototypes in real life.
-
----
-
-## 5. Building and Fabricating the Parts
-
-Our team spent a considerable amount of time working in the robotics lab, experimenting with different components and trying to turn our designs into physical structures.
-
-We used the resources available to us, including the laser cutter, various motors, mounting components, and other mechanical parts.
-
-Many of our decisions depended on what materials and equipment we could find in the lab.
-
-Instead of following a fixed list of purchased parts, we often had to adapt our original ideas to the resources we already had.
-
-Some of our work involved designing or modifying motor mounts, experimenting with ways to support the rotating platform, and planning how the vertical carriage could be connected to the belt.
-
-We also had to consider how different components would fit together.
-
-A change to one part of the structure often required adjustments to several other parts.
-
-For example, changing the motor's position could affect the pulley alignment and the location of the belt. Similarly, modifying the rotating platform sometimes required us to redesign its connection to the motor.
-
-This made the fabrication process much more iterative than we initially expected.
 
 ### Parts and Components We Worked With
 
@@ -225,31 +118,19 @@ This made the fabrication process much more iterative than we initially expected
 | Custom CAD Parts | Support and connect mechanical components |
 | Base Structure | Supports the overall scanner |
 
-### Fabrication Photos
+### Robotics Lab
 
-**Image 9: Working in the Robotics Lab**
+A huge thanks to Dr. Dzula for opening the robotics lab! We really got into working with the laser cutter, and many components listed above was from the robotics lab. The many M4 screws, M3 screws, dangling parts, connection metal pieces, small screwdrivers, rulers, laser cutter, 3D SCANNER, arduino, the belts, the hot glue gun, and the long hexagonal poles were all from the Robotics lab.
 
-[Insert image here]
+**Our Physical Prototype**
 
-**Image 10: Laser-Cut or Fabricated Components**
-
-[Insert image here]
-
-**Image 11: Our Physical Prototype**
-
-[Insert image here]
+![](../../images/S7.png)
 
 ---
 
-## 6. Arduino Programming and Motor Testing
+## Arduino Programming and Motor Testing
 
-Another major part of our project involved connecting the stepper motors to the Arduino and writing code to control them.
-
-We used an Arduino Uno R3 and experimented with different motor setups.
-
-Our goal was to independently control the motor responsible for the rotating platform and the motor responsible for the vertical movement mechanism.
-
-However, at this stage, our Arduino program is still a very early prototype.
+Another major part of our project involved connecting the stepper motors to the Arduino and writing code to control them. We used an Arduino Uno R3 and experimented with different motor setups. Our goal was to independently control the motor responsible for the rotating platform and the motor responsible for the vertical movement mechanism. However, at this stage, our Arduino program is still a very early prototype.
 
 ### What Our Current Code Does
 
@@ -335,65 +216,8 @@ Save Measurement Data
 Process Data into a 3D Model
 ```
 
-For now, this remains a proposed workflow rather than a completed program.
 
-We believe it is important to document this distinction because our project is still under development.
-
-### Arduino Documentation
-
-**Image 12: Arduino Wiring and Motor Connections**
-
-[Insert image here]
-
-**Image 13: Screenshot of Our Arduino Code**
-
-[Insert image here]
-
-**Image 14: Motor Testing**
-
-[Insert image or video link here]
-
-### Programming Reflection
-
-What problems did we encounter while connecting and testing the motors?
-
-[Write reflection here]
-
----
-
-## 7. Debugging and Problem-Solving
-
-One of the most important parts of this project has been the amount of troubleshooting required.
-
-Not everything worked the first time, and several parts of our design had to be reconsidered.
-
-Some of our main challenges included finding suitable mechanical components, stabilizing the rotating platform, determining how to produce vertical movement, and establishing reliable connections between the Arduino and motors.
-
-We often had to return to earlier stages of the project after discovering a problem.
-
-For example, when the rotating platform was unstable, we could not simply solve the issue through programming. We needed to modify the physical design.
-
-Similarly, when considering the vertical mechanism, we learned that the motor's rotation alone would not lift the sensor. We needed a suitable pulley and belt arrangement, along with a stable guide structure.
-
-Our process involved testing, identifying problems, discussing possible solutions, and modifying our designs.
-
-### Main Challenges
-
-| Problem | What We Did | What We Learned |
-|---|---|---|
-| Missing lead screw | Explored belt-driven movement | Designs can be adapted |
-| Missing guide rods | Investigated hexagonal rod | Material limitations affect design |
-| Unstable rotating platform | Redesigned CAD models repeatedly | Stability requires careful engineering |
-| Vertical movement mechanism | Studied pulleys and belts | Rotational motion can create linear motion |
-| Motor configurations | Tested different setups | Motor placement affects performance |
-| Arduino connections | Debugged electronics and code | Reliable wiring is essential |
-| Incomplete scanning code | Focused on continuous motor testing | Complex programs should be developed in stages |
-
-We gradually realized that the most valuable part of the project was not simply creating a final machine, but understanding why our designs worked or failed.
-
----
-
-## 8. AI Usage and Our Own Contributions
+## AI Usage and Our Own Contributions
 
 We used ChatGPT throughout parts of our project as a resource for learning about mechanical design and exploring possible solutions.
 
@@ -427,55 +251,7 @@ We see AI as a useful tool for learning engineering concepts, but not as a repla
 
 ---
 
-## 9. Where Our Project Stands Now
-
-At this stage, our project is still in development.
-
-We have established the main concept of a two-motor 3D scanner and explored the mechanical structures required for the rotating platform and vertical sensor movement.
-
-We have also created several CAD prototypes, particularly for the rotating object holder, and learned from the stability problems we encountered.
-
-On the electronics side, we have worked on connecting our stepper motors to Arduino and developing basic code to test continuous motor rotation.
-
-However, we have not yet completed a fully functioning 3D scanning system.
-
-Our next steps involve refining the mechanical structure, improving the motor-to-platform connection, testing the belt-driven carriage, and developing a more complete Arduino program that coordinates the motors with the sensor.
-
-Eventually, we hope to collect meaningful distance measurements and reconstruct a digital 3D model of a physical object.
-
-We still have several engineering problems to solve, but our progress so far has given us a much stronger understanding of the mechanical and electronic systems involved.
-
----
-
-## 10. Personal Reflection
-
-**Name:** [Your Name]
-
-**Date:** [Date]
-
-### What Was My Biggest Contribution?
-
-[Write your personal reflection here]
-
-### What Was the Most Difficult Problem I Faced?
-
-[Write your personal reflection here]
-
-### What Did I Learn From Repeatedly Redesigning Our Prototypes?
-
-[Write your personal reflection here]
-
-### How Did My Understanding of Engineering Change?
-
-[Write your personal reflection here]
-
-### What Would I Do Differently Next Time?
-
-[Write your personal reflection here]
-
----
-
-## 11. Final Thoughts
+## Final Thoughts at this Juncture of Time
 
 Looking back at our work so far, this project has been more complicated than we expected.
 
@@ -494,8 +270,3 @@ We have learned that engineering is not just about knowing how something should 
 For us, one of the most valuable lessons has been learning to approach problems through experimentation rather than expecting the first design to work perfectly.
 
 **Our scanner is not finished yet, but the process of designing, testing, debugging, and improving it has already taught us a great deal about engineering.**
-
----
-
-*End of Innovator's Journal*
-
