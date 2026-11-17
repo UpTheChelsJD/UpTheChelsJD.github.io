@@ -40,7 +40,7 @@ I've started to create a one-shot game with our own school's AI GPT. I've made a
 
 After creating the game one-shot, my teammate Steven Shi and I built on the game by adding controls (joystick) that could physically control the game.
 
-[**View Project →**](projects/video-game-control/)
+[**View Project →**](projects/video-and-control/)
 
 ---
 
