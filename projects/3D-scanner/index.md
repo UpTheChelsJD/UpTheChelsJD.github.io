@@ -40,7 +40,7 @@ We initially took inspiration from existing DIY 3D scanners that used a threaded
 
 **Stepper Motor → Lead Screw → Moving Carriage → IR Sensor**
 
-fdsf
+![](../../images/S1.png)
 
 The above picture was what we tried to aim for, yet **when we checked the materials available in our robotics lab**, we encountered our **FIRST MAJOR PROBLEM**.
 
