@@ -94,3 +94,6 @@ Switching to Snake reduced the number of controls I needed to handle and gave me
 Overall, it was a great fun few days going over the software part of the project. The part I found most interesting was troubleshooting the code, because it was very fruitful to see the feedback we got from AI and then use it to build off the current model. I felt really proud when both Steven and I finished the dash game and also my snake game together in a span of two days.
 
 In general, this project showed me that getting code from AI is only one part of making a prototype. I still need to understand what the code is supposed to do, test it with my hardware, and describe problems clearly when something goes wrong.
+
+[← Back to All Projects](../../)
+
