@@ -1,30 +1,20 @@
 
 
-# Innovator's Journal
-## Building an Arduino-Based 3D Scanner
+# Building a DIY Arduino-Based 3D Scanner
 
-**Project:** DIY 3D Scanner  
-**Team Members:** [Team Members]  
-**Location:** Robotics Lab  
-**Project Status:** In Development
+I am so glad I could do this project over a span of many days. I have learnt a lot everyday, and I have many great resources around me to make this task very fruitful and joyful.
 
 ---
 
 ## 1. How We Started
 
-When our team first started this project, we wanted to build something that combined mechanical engineering, programming, and 3D design. We decided to create a DIY 3D scanner using Arduino and materials available in our robotics lab.
+When our team first started this project, we wanted to build something that combined mechanical engineering, programming, and 3D design. We knew our task was about using the stepper motors, so we decided to create a DIY 3D scanner using Arduino and many motors and the materials available in our robotics lab.
 
-The idea was to build a machine that could measure a physical object from different angles and heights, eventually allowing us to reconstruct its shape as a digital 3D model.
-
-Our initial concept involved two stepper motors with different responsibilities.
-
-The first motor would rotate a circular platform holding the object. The platform would turn through 360 degrees so the sensor could collect measurements from different angles.
-
-The second motor would control the vertical movement of a Sharp infrared distance sensor. By moving the sensor up and down, we could measure different sections of the object.
+Wachi had some inspiration after watching a youtube video on the same concept. His idea was to build a machine that could measure a physical object from different angles and heights, eventually allowing us to reconstruct its shape as a digital 3D model. He wanted the **first motor** to rotate a circular platform holding the object. The platform would turn through **360 degrees so the sensor could collect measurements from different angles**. He then wanted the **second motor** to control the vertical movement of a Sharp infrared distance sensor. By moving the sensor up and down, we could measure different sections of the object.
 
 In theory, combining these movements would allow us to collect enough measurements to begin reconstructing a three-dimensional model.
 
-However, we quickly realized that designing the system was much easier than actually building it.
+However, we quickly realized that designing the system was much easier than actually building it. It was a matter of time before we met a lot of difficulties along the way.
 
 ### Our Initial Design
 
