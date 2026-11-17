@@ -42,3 +42,11 @@ After creating the game one-shot, my teammate Steven Shi and I built on the game
 
 [**View Project →**](projects/video-game-control/)
 
+---
+
+### DIY 3D Scanner
+
+After having a very thorough understanding of stepper motors, my teammates Sean and Wachi and I built a simple DIY 3D scanner with two axises of spin and a belt mechanism to scan real-life objects.
+
+[**View Project →**](projects/3D-scanner/)
+
