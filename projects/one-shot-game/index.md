@@ -268,5 +268,8 @@ After many classes and a few hours of research, I feel more confident learning a
 
 To me, approaching software in the future is always going to be a challenge without AI and ,to be really honest, very time-consuming without support. I treat every software class, coding class, Arduino Electrical Engineering class, or even those lecture classes with passion and try to learn lots from them. My attitude on technology is that using AI is way more productive, but understanding and improving self-learning and self-teaching skills are more important.
 
+[← Back to All Projects](../../)
+
+
 
 
