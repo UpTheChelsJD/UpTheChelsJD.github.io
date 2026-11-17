@@ -77,8 +77,9 @@ This was actually very rewarding. We miscalculated the first time, and we only h
 
 Yet, here is just a video to show how we were able to make one connection part work! This would mean that we could replicate this into two or even 3!
 
-VIDEO
-
+<video style="width:100%; max-width:700px;" controls>
+  <source src="../../videos/S5.mp4" type="video/mp4">
+</video>
 ---
 
 ## Designing the Rotating Platform in Onshape
@@ -99,9 +100,11 @@ Wachi took a long time first testing the multimeter, and after many classes, the
 
 Hence, here is just a video to show our current progress with the motors and how they are spinning already!
 
+<video style="width:100%; max-width:700px;" controls>
+  <source src="../../videos/S6.mp4" type="video/mp4">
+</video>
 
 ## What We Have Understood, What We Have Learnt, and What We Have Used.
-
 
 ### Parts and Components We Worked With
 
@@ -128,145 +131,82 @@ A huge thanks to Dr. Dzula for opening the robotics lab! We really got into work
 
 ---
 
-## Arduino Programming and Motor Testing
+### Arduino Programming and Motor Testing
 
 Another major part of our project involved connecting the stepper motors to the Arduino and writing code to control them. We used an Arduino Uno R3 and experimented with different motor setups. Our goal was to independently control the motor responsible for the rotating platform and the motor responsible for the vertical movement mechanism. However, at this stage, our Arduino program is still a very early prototype.
 
 ### What Our Current Code Does
 
-Our current program is designed mainly to test whether the motors can rotate continuously.
+```cpp
+const int stepX = 2;
+const int dirX = 5;
 
-We have experimented with running two stepper motors at different speeds.
+const int stepY = 3;
+const int dirY = 6;
 
-One motor is intended for the rotating object platform, while the other is intended for the vertical belt mechanism.
+const int enablePin = 8;
 
-**At the moment, our code simply keeps the motors spinning. It does not yet perform an automated 3D scanning sequence.**
+// Smaller interval = faster rotation
+const unsigned long fastSpeed = 5000;
+const unsigned long slowSpeed = 20000;
 
-The program is useful for checking:
+unsigned long lastStepX = 0;
+unsigned long lastStepY = 0;
 
-- Whether the Arduino can communicate with the motor control hardware.
-- Whether both motors respond to the code.
-- Whether the motors can rotate continuously.
-- How changing the programmed motor speed affects their movement.
-- Whether our electronic connections work as expected.
+void setup() {
+  pinMode(stepX, OUTPUT);
+  pinMode(dirX, OUTPUT);
 
-This testing stage is important because we need to understand how the motors behave before connecting them to a complete scanning mechanism.
+  pinMode(stepY, OUTPUT);
+  pinMode(dirY, OUTPUT);
 
-### Our Current Motor Setup
+  pinMode(enablePin, OUTPUT);
 
-```text
-Arduino Uno R3
-      |
-      |---- Motor Control 1
-      |           |
-      |      Stepper Motor 1
-      |           |
-      |      Continuous Rotation
-      |
-      |---- Motor Control 2
-                  |
-             Stepper Motor 2
-                  |
-             Continuous Rotation
+  digitalWrite(dirX, HIGH);
+  digitalWrite(dirY, HIGH);
+
+  digitalWrite(enablePin, LOW);
+}
+
+void loop() {
+  unsigned long currentTime = micros();
+
+  // Motor 1: Fast rotation
+  if (currentTime - lastStepX >= fastSpeed) {
+    lastStepX = currentTime;
+
+    digitalWrite(stepX, HIGH);
+    delayMicroseconds(5);
+    digitalWrite(stepX, LOW);
+  }
+
+  // Motor 2: Slow rotation
+  if (currentTime - lastStepY >= slowSpeed) {
+    lastStepY = currentTime;
+
+    digitalWrite(stepY, HIGH);
+    delayMicroseconds(5);
+    digitalWrite(stepY, LOW);
+  }
+}
 ```
 
-The motors are being tested as independent components. We have not yet completed the programming needed to synchronize their movements with the IR sensor.
-
-### What Our Code Cannot Do Yet
-
-The current version does not:
-
-1. Automatically stop the rotating platform after a precise 360-degree scanning cycle.
-2. Move the IR sensor upward by a specific measured distance after each rotation.
-3. Read and record Sharp IR sensor measurements as part of a coordinated scan.
-4. Synchronize the sensor measurements with the platform's angular position.
-5. Convert collected sensor data into a complete 3D model.
-
-These are functions we hope to add as the project develops.
-
-### Our Next Programming Goal
-
-Eventually, we want the Arduino to follow a sequence similar to this:
-
-```text
-START
-  |
-  v
-Set Sensor to Initial Height
-  |
-  v
-Rotate Platform
-  |
-  v
-Collect IR Distance Measurements
-  |
-  v
-Complete One 360-Degree Rotation
-  |
-  v
-Move Sensor Up by a Small Increment
-  |
-  v
-Repeat Until Scanning Is Complete
-  |
-  v
-Save Measurement Data
-  |
-  v
-Process Data into a 3D Model
-```
+Our current program is designed mainly to test whether the motors can rotate continuously. We have experimented with running two stepper motors at different speeds. One motor is intended for the rotating object platform, while the other is intended for the vertical belt mechanism.
+**At the moment, our code simply keeps the motors spinning - one slow, the other fast. It does not yet perform an automated 3D scanning sequence.**
 
 
 ## AI Usage and Our Own Contributions
 
-We used ChatGPT throughout parts of our project as a resource for learning about mechanical design and exploring possible solutions.
+To be honest, we used ChatGPT throughout parts of our project as a resource for learning about mechanical design and exploring possible solutions. **We want to be transparent about its role.**
 
-We want to be transparent about its role.
+ChatGPT helped us understand how different vertical movement mechanisms work, including lead screws, linear guide rods, timing belts, pulleys, and moving carriages. It also provided conceptual diagrams and explanations that inspired some of our structural ideas.
 
-ChatGPT helped us understand how different vertical movement mechanisms work, including lead screws, linear guide rods, timing belts, pulleys, and moving carriages.
-
-It also provided conceptual diagrams and explanations that inspired some of our structural ideas.
-
-One particularly useful contribution was helping us explore the possibility of replacing the original shaft-driven mechanism with a belt-driven system when we realized that we did not have the required materials.
-
-AI helped us consider alternatives and understand the engineering principles behind them.
-
-However, there is a significant difference between receiving an idea and implementing it in a physical machine.
-
-The practical development of the project was carried out by our team.
-
-We were responsible for designing and repeatedly modifying our CAD models, experimenting with motor configurations, connecting the Arduino and motors, developing and testing the Arduino code, and debugging the system.
-
-We also independently used the robotics lab and its equipment, including the laser cutter, to create and modify components for our prototypes.
-
-The decisions about which parts to use, how to assemble them, and how to respond when something did not work were made by our team.
-
-Although ChatGPT provided useful inspiration, it could not determine whether a particular physical assembly would actually work without real testing.
-
-We had to make those judgments ourselves through experimentation.
+However, there is a significant difference between receiving an idea and implementing it in a physical machine. The practical development of the project was carried out by our team, and the whole mechanical side was done by my friends and I. We were responsible for designing and repeatedly modifying our CAD models, experimenting with motor configurations, connecting the Arduino and motors, developing and testing the Arduino code, and debugging the system. It was tedious but rewarding alas.
 
 **Overall, AI supported our understanding and brainstorming, while the hands-on design, programming, fabrication, troubleshooting, and engineering decisions were completed by our team.**
-
-We see AI as a useful tool for learning engineering concepts, but not as a replacement for the work required to build and debug a real system.
 
 ---
 
 ## Final Thoughts at this Juncture of Time
 
-Looking back at our work so far, this project has been more complicated than we expected.
-
-We began with a relatively straightforward idea: use two motors and a distance sensor to create a 3D scanner.
-
-However, once we started working with actual components, we encountered problems involving mechanical stability, material availability, motor configurations, and electronic connections.
-
-Our original shaft-driven design had to be reconsidered because we lacked the necessary parts. Our rotating platform required repeated CAD redesigns because several versions were unstable when mounted to the motor.
-
-Even our Arduino code remains a basic testing program rather than a complete scanning system.
-
-Despite these challenges, we have made progress in understanding how the components need to work together.
-
-We have learned that engineering is not just about knowing how something should work in theory. It is also about making adjustments when the theory meets physical limitations.
-
-For us, one of the most valuable lessons has been learning to approach problems through experimentation rather than expecting the first design to work perfectly.
-
-**Our scanner is not finished yet, but the process of designing, testing, debugging, and improving it has already taught us a great deal about engineering.**
+Looking back at our work so far, this project has been more complicated than we expected. We had thought of the task being simple, but it clearly isn't that easy! We will work harder for the final week and push for a good result!
